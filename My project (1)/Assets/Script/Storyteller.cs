@@ -18,6 +18,7 @@ public class Storyteller : MonoBehaviour
     [SerializeField] bool isTyping;
     [SerializeField] StoryManager storyManager;
     [SerializeField] TimeManager timeManager;
+    [SerializeField] ActManager actManager;
     [SerializeField] bool isQuest;
 
     void Awake()
@@ -26,6 +27,7 @@ public class Storyteller : MonoBehaviour
         storyList = new List<Story>();
         storyManager = GameObject.Find("StoryManager").GetComponent<StoryManager>();
         timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
+        actManager = GameObject.Find("ActManager").GetComponent<ActManager>();
         ReadStoryFile();
     }
 
@@ -41,6 +43,12 @@ public class Storyteller : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log(storyList[storyIndex].actKind);
+                    if(storyList[storyIndex].actKind == "move")
+                    {
+                        Debug.Log("안녕하세요");
+                        actManager.TimeLineStart(storyList[storyIndex].tellerName);
+                    }
                     if(!isTyping)
                     {
                         storyIndex++;
