@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float moveSpeed;
     private Rigidbody2D rb;
     // private Animator anim;
+    float moveX = 0f;
+    float moveY  = 0f;
 
     void Start()
     {
@@ -17,35 +19,46 @@ public class PlayerMove : MonoBehaviour
     {
         if(Time.timeScale != 0)
         {
-            float horizontalMove = 0f;
-            float verticalMove = 0f;
+            MoveHorizontally();
+            MoveVertical();
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                // anim.SetInteger("State", 1);
-                horizontalMove = -1f;
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                // anim.SetInteger("State", 1);
-                horizontalMove = 1f;
-            }
-            if (Input.GetKey(KeyCode.W))
-            {
-                verticalMove = 1f;
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                verticalMove = -1f;
-            }
-            
             if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
             {
-                horizontalMove = 0f;
-                verticalMove = 0f;
+                moveX = 0f;
+                moveY  = 0f;
             }
+        }
+    }
 
-            rb.linearVelocity = new Vector2(horizontalMove * moveSpeed, verticalMove * moveSpeed);
+    void FixedUpdate()
+    {
+        rb.linearVelocity = new Vector2(moveX * moveSpeed, moveY  * moveSpeed);
+    }
+
+    void MoveHorizontally()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            // anim.SetInteger("State", 1);
+            moveX = -1f;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            // anim.SetInteger("State", 1);
+            moveX = 1f;
+        }
+    }
+    
+    void MoveVertical()
+    {
+        
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveY  = 1f;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            moveY  = -1f;
         }
     }
 }
