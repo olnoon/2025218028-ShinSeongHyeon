@@ -43,10 +43,8 @@ public class Storyteller : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(storyList[storyIndex].actKind);
                     if(storyList[storyIndex].actKind == "move")
                     {
-                        Debug.Log("안녕하세요");
                         actManager.TimeLineStart(storyList[storyIndex].tellerName);
                     }
                     if(!isTyping)

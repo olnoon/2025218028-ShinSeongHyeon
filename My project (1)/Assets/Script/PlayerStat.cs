@@ -1,10 +1,16 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerStat : MonoBehaviour
 {
     [SerializeField] int HP;
     [SerializeField] int currentHP;
+    [SerializeField] bool isMain;
+    [SerializeField] TurnManager turnManager;
+
+    void Awake()
+    {
+        turnManager = GameObject.Find("TurnManager").GetComponent<TurnManager>();
+    }
 
     void Start()
     {
@@ -21,6 +27,10 @@ public class PlayerStat : MonoBehaviour
 
     void PostBattle()
     {
-        Debug.Log("나중에 다른 씬으로 넘어가게 할 예정입니다.");
+        if(isMain)
+        {
+            turnManager.PostBattle();
+            Debug.Log("아직 해당기능은 완전하지 않습니다.");
+        }
     }
 }
