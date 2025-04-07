@@ -8,7 +8,11 @@ public class PlayerMove : MonoBehaviour
     // private Animator anim;
     float moveX = 0f;
     float moveY  = 0f;
-
+    public bool isMain;
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

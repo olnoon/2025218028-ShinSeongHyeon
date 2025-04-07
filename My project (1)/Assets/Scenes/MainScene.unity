@@ -195,11 +195,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1456592046}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015258789, y: 178.5}
-  m_SizeDelta: {x: 280.23, y: 52.54}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 70.909996, y: -0.33000183}
+  m_SizeDelta: {x: 142.01, y: 27.589996}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &167448016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,10 +222,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -272,15 +272,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 764344625}
   - {fileID: 1831087916}
+  - {fileID: 764344625}
   m_Father: {fileID: 2111390659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1245.2}
-  m_SizeDelta: {x: 6194, y: 993.6001}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800.01, y: 151.87}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &517874406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -456,6 +457,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb07d70920222046ac4d47242136667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +700,7 @@ GameObject:
   - component: {fileID: 764344627}
   - component: {fileID: 764344626}
   m_Layer: 5
-  m_Name: Teller
+  m_Name: Detail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,10 +720,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 517874405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -358}
-  m_SizeDelta: {x: 3404, y: 353.45}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -400, y: -97.41998}
+  m_SizeDelta: {x: 800.01, y: 125.7}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &764344626
 MonoBehaviour:
@@ -734,7 +747,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 210
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -5787,11 +5800,11 @@ RectTransform:
   - {fileID: 1698107816}
   m_Father: {fileID: 2111390659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 782.98, y: 314.92}
-  m_SizeDelta: {x: 354.03, y: 450.16}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 142.01, y: 180.58}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1456592047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5951,9 +5964,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3500061, y: -28.087}
-  m_SizeDelta: {x: 320.95, y: 360.64}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 71.00497, y: 67}
+  m_SizeDelta: {x: 142.01, y: 155.94}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1698107817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5976,10 +5989,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -6087,7 +6100,7 @@ GameObject:
   - component: {fileID: 1831087918}
   - component: {fileID: 1831087917}
   m_Layer: 5
-  m_Name: Detail
+  m_Name: Teller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6107,11 +6120,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 517874405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: -579.0499}
-  m_SizeDelta: {x: 6179.1, y: 790.35}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_SizeDelta: {x: 800.01, y: 55.740005}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1831087917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6134,7 +6147,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 250
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -6218,9 +6231,9 @@ MonoBehaviour:
   storyEnd: 0
   dialogue: {fileID: 517874404}
   isTyping: 0
-  storyManager: {fileID: 0}
-  timeManager: {fileID: 0}
-  actManager: {fileID: 0}
+  storyManager: {fileID: 1983772961}
+  timeManager: {fileID: 1045006825}
+  actManager: {fileID: 652882392}
   isQuest: 0
 --- !u!1 &2024120729
 GameObject:
@@ -6473,7 +6486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 0.31
   m_ReferenceResolution: {x: 800, y: 600}

@@ -25,9 +25,6 @@ public class Storyteller : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         storyList = new List<Story>();
-        storyManager = GameObject.Find("StoryManager").GetComponent<StoryManager>();
-        timeManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
-        actManager = GameObject.Find("ActManager").GetComponent<ActManager>();
         ReadStoryFile();
     }
 
@@ -43,60 +40,82 @@ public class Storyteller : MonoBehaviour
                 }
                 else
                 {
-                    if(storyList[storyIndex].actKind == "move")
-                    {
-                        actManager.TimeLineStart(storyList[storyIndex].tellerName);
-                    }
-                    if(!isTyping)
-                    {
-                        storyIndex++;
-                        if(storyIndex < storyList.Count)
-                        {
-                            StartCoroutine(TypingScript());
-                        }
-                        else if(storyIndex == storyList.Count)
-                        {
-                            EndDialogue();
-                        }
-                    }
-                    else
-                    {
-                        UpdateDialogue(storyList[storyIndex].detail);
-                        isTyping = false;
-                    }
+                    MoveCharacter();
+                    WatchStory();
                 }
             }
         }
     }
+    void MoveCharacter()
+    {
+        if(storyList[storyIndex].actKind == "move")
+        {
+            actManager.TimeLineStart(storyList[storyIndex].tellerName);
+        }
+    }
+    void WatchStory()
+    {
+        if(!isTyping)
+        {
+            storyIndex++;
+            if(storyIndex < storyList.Count)
+            {
+                StartCoroutine(TypingScript());
+            }
+            else if(storyIndex == storyList.Count)
+            {
+                EndDialogue();
+            }
+        }
+        else
+        {
+            UpdateDialogue(storyList[storyIndex].detail);
+            isTyping = false;
+        }
+    }
+    
     public void ReadStoryFile()
     {
         storyList.Clear();
         storyIndex = 0;
         storyEnd = false;
 
+        if (storyManager.storyFiles.Count == 0)
+        {
+            return;
+        }
+
         TextAsset textFile = storyManager.storyFiles[0];
         storyManager.storyFiles.RemoveAt(0);
-        StringReader stringReader = new StringReader(textFile.text);
 
-        while(stringReader != null)
+        using (StringReader reader = new StringReader(textFile.text))
         {
-            string line = stringReader.ReadLine();
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] tokens = line.Split('|');
 
-            if(line == null)
-                break;
+                if (tokens.Length < 4)
+                {
+                    continue;
+                }
 
-            Story storyData = new Story();
-            storyData.tellerName = line.Split('|')[0];
-            storyData.detail = line.Split('|')[1];
-            storyData.actKind = line.Split('|')[2];
-            isQuest = line.Split('|')[3] == "true";
-            storyList.Add(storyData);
+                Story storyData = new Story
+                {
+                    tellerName = tokens[0],
+                    detail = tokens[1],
+                    actKind = tokens[2]
+                };
+
+                isQuest = tokens[3].Trim().ToLower() == "true";
+
+                storyList.Add(storyData);
+            }
         }
 
         OnChatWindow();
         StartCoroutine(TypingScript());
         epNum++;
-        stringReader.Close();
     }
 
     void OnChatWindow()

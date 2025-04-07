@@ -15,32 +15,46 @@ public class QuestManager : MonoBehaviour
 
     public void ReadQuestFile()
     {
+        if (questFiles.Count == 0) return;
+
         questList.Clear();
         questIndex = 0;
         questEnd = false;
 
         TextAsset textFile = questFiles[0];
         questFiles.RemoveAt(0);
-        StringReader stringReader = new StringReader(textFile.text);
 
-        while(stringReader != null)
+        using (StringReader reader = new StringReader(textFile.text))
         {
-            string line = stringReader.ReadLine();
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] tokens = line.Split('|');
+                if (tokens.Length < 3)
+                {
+                    continue;
+                }
 
-            if(line == null)
-                break;
+                Quest quest = new Quest
+                {
+                    questTitle = tokens[0],
+                    questKind = tokens[1],
+                    questDetail = tokens[2]
+                };
 
-            Quest questData = new Quest();
-            questData.questTitle = line.Split('|')[0];
-            questData.questKind = line.Split('|')[1];
-            questData.questDetail = line.Split('|')[2];
-            
-            questShower.transform.GetChild(1).GetComponent<Text>().text = questData.questTitle;
-            questList.Add(questData);
+                questList.Add(quest);
+            }
         }
 
-        questIndex++;
-
-        stringReader.Close();
+        UpdateUI();
     }
+
+    void UpdateUI()
+    {
+        if (questList.Count > 0)
+        {
+            questShower.transform.GetChild(1).GetComponent<Text>().text = questList[0].questTitle;
+        }
+    }
+
 }
