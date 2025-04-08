@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FollowCamera : MonoBehaviour
 {
     [SerializeField] GameObject mainCharacter;
-    void Awake()
+    [SerializeField] bool isAnchored;
+    void Start()
     {
         DontDestroyOnLoad(gameObject);
-        foreach(PlayerMove each in FindObjectsByType<PlayerMove>(FindObjectsSortMode.None))
+        foreach(PlayerStat each in FindObjectsByType<PlayerStat>(FindObjectsSortMode.None))
         {
             if(each.isMain)
             {
@@ -18,7 +20,32 @@ public class FollowCamera : MonoBehaviour
 
     void Update()
     {
-        Vector2 GoingPos = new Vector2(mainCharacter.transform.position.x, mainCharacter.transform.position.y);
-        transform.position = GoingPos;
+        if(mainCharacter != null && isAnchored)
+        {
+            Vector3 GoingPos = new Vector3(mainCharacter.transform.position.x, mainCharacter.transform.position.y, -20);
+            transform.localPosition = GoingPos;
+        }
+    }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "BattleScene")
+        {
+            transform.position = new Vector3(0, 0, -10);
+            isAnchored = false;
+        }
+        else
+        {
+            isAnchored = true;
+        }
     }
 }

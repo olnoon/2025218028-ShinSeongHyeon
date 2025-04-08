@@ -4,7 +4,7 @@ public class PlayerStat : MonoBehaviour
 {
     [SerializeField] int HP;
     [SerializeField] int currentHP;
-    [SerializeField] bool isMain;
+    public bool isMain;
     [SerializeField] TurnManager turnManager;
 
     void Awake()
@@ -21,16 +21,15 @@ public class PlayerStat : MonoBehaviour
     {
         if (collider.gameObject.GetComponent<EnemyStat>() != null)
         {
-            PostBattle();
+            PostBattle(collider.gameObject);
         }
     }
 
-    void PostBattle()
+    void PostBattle(GameObject enemy)
     {
         if(isMain)
         {
-            turnManager.PostBattle();
-            Debug.Log("아직 해당기능은 완전하지 않습니다.");
+            turnManager.PostBattle(enemy);
         }
     }
 }

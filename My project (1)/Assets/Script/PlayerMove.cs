@@ -8,7 +8,8 @@ public class PlayerMove : MonoBehaviour
     // private Animator anim;
     float moveX = 0f;
     float moveY  = 0f;
-    public bool isMain;
+    public bool isAnchored = false;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -21,16 +22,15 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if(Time.timeScale != 0)
+        if(Time.timeScale != 0 && !isAnchored)
         {
             MoveHorizontally();
             MoveVertical();
-
-            if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
-            {
-                moveX = 0f;
-                moveY  = 0f;
-            }
+        }
+        else if(isAnchored)
+        {
+            moveX = 0f;
+            moveY = 0f;
         }
     }
 
@@ -51,11 +51,11 @@ public class PlayerMove : MonoBehaviour
             // anim.SetInteger("State", 1);
             moveX = 1f;
         }
+        ControlMove();
     }
     
     void MoveVertical()
     {
-        
         if (Input.GetKey(KeyCode.W))
         {
             moveY  = 1f;
@@ -63,6 +63,16 @@ public class PlayerMove : MonoBehaviour
         else if (Input.GetKey(KeyCode.S))
         {
             moveY  = -1f;
+        }
+        ControlMove();
+    }
+
+    void ControlMove()
+    {
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+        {
+            moveX = 0f;
+            moveY = 0f;
         }
     }
 }
