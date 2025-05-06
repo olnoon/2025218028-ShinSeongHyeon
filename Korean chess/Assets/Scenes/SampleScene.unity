@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kind: "\uBC14\uAE65\uC0C1 \uCC28\uB9BC"
-  tableSetting: {fileID: 129624199}
+  GM: {fileID: 129624198}
 --- !u!61 &117221832
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -791,7 +791,6 @@ GameObject:
   m_Component:
   - component: {fileID: 129624197}
   - component: {fileID: 129624198}
-  - component: {fileID: 129624199}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -927,25 +926,12 @@ MonoBehaviour:
     - {fileID: 1049558720}
     - {fileID: 1940164283}
     - {fileID: 329212229}
---- !u!114 &129624199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129624196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9cfed5fb8b9a53458be6585d837e193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   RedMa: {fileID: 5426594969797421684, guid: 66ace6d4bb0b94443ab211960c5313e7, type: 3}
   RedSang: {fileID: 3717870238514114076, guid: 85a667c5197aaf045bed2b37507ed707, type: 3}
   BlueMa: {fileID: 1120126730615484660, guid: 27b70ae66448b2a449dd61643677f1e6, type: 3}
   BlueSang: {fileID: 3153866558447297504, guid: 0234eca82dc303b4080eb58740cad76d, type: 3}
   BlueSangSetter: {fileID: 1047505604}
   RedSangSetter: {fileID: 1819599205}
-  GM: {fileID: 129624198}
   isRedSet: 1
 --- !u!1 &147681887
 GameObject:
@@ -988,6 +974,8 @@ GameObject:
   m_Component:
   - component: {fileID: 148700951}
   - component: {fileID: 148700950}
+  - component: {fileID: 148700952}
+  - component: {fileID: 148700953}
   m_Layer: 0
   m_Name: BlueJol
   m_TagString: Untagged
@@ -1065,6 +1053,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481889013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &148700952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148700949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f663b756ae25bbe4b85a40c205a8509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 129624198}
+  isSelected: 0
+  currectCoordinate: {x: 6, y: 3}
+  displayMal: {fileID: 0}
+  showerMals: []
+  malKind: "\uCAC4\uBCD1"
+  malTeam: "\uCCAD"
+--- !u!61 &148700953
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148700949}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.86, y: 3.86}
+    newSize: {x: 3.86, y: 3.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.86, y: 3.86}
+  m_EdgeRadius: 0
 --- !u!1 &153490063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,7 +1519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kind: "\uC67C\uC0C1 \uCC28\uB9BC"
-  tableSetting: {fileID: 129624199}
+  GM: {fileID: 129624198}
 --- !u!61 &235474634
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2635,7 +2688,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 5531078883238912529, guid: b6509960f45e9ab4587c606b22dbcb2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3726,7 +3779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kind: "\uC548\uC0C1 \uCC28\uB9BC"
-  tableSetting: {fileID: 129624199}
+  GM: {fileID: 129624198}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4611,7 +4664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kind: "\uC624\uB978\uC0C1 \uCC28\uB9BC"
-  tableSetting: {fileID: 129624199}
+  GM: {fileID: 129624198}
 --- !u!1 &808270948
 GameObject:
   m_ObjectHideFlags: 0
@@ -5653,7 +5706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kind: "\uC548\uC0C1 \uCC28\uB9BC"
-  tableSetting: {fileID: 129624199}
+  GM: {fileID: 129624198}
 --- !u!61 &1100514317
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5748,6 +5801,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1103850036}
   - component: {fileID: 1103850035}
+  - component: {fileID: 1103850037}
+  - component: {fileID: 1103850038}
   m_Layer: 0
   m_Name: BlueJol
   m_TagString: Untagged
@@ -5825,6 +5880,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481889013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1103850037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103850034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f663b756ae25bbe4b85a40c205a8509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 129624198}
+  isSelected: 0
+  currectCoordinate: {x: 8, y: 3}
+  displayMal: {fileID: 0}
+  showerMals: []
+  malKind: "\uCAC4\uBCD1"
+  malTeam: "\uCCAD"
+--- !u!61 &1103850038
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103850034}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.86, y: 3.86}
+    newSize: {x: 3.86, y: 3.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.86, y: 3.86}
+  m_EdgeRadius: 0
 --- !u!1 &1107589218
 GameObject:
   m_ObjectHideFlags: 0
@@ -5987,7 +6107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kind: "\uC624\uB978\uC0C1 \uCC28\uB9BC"
-  tableSetting: {fileID: 129624199}
+  GM: {fileID: 129624198}
 --- !u!61 &1130080531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7245,6 +7365,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1461623754}
   - component: {fileID: 1461623753}
+  - component: {fileID: 1461623755}
+  - component: {fileID: 1461623756}
   m_Layer: 0
   m_Name: BlueJol
   m_TagString: Untagged
@@ -7322,6 +7444,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481889013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1461623755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461623752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f663b756ae25bbe4b85a40c205a8509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 129624198}
+  isSelected: 0
+  currectCoordinate: {x: 0, y: 3}
+  displayMal: {fileID: 0}
+  showerMals: []
+  malKind: "\uCAC4\uBCD1"
+  malTeam: "\uCCAD"
+--- !u!61 &1461623756
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461623752}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.86, y: 3.86}
+    newSize: {x: 3.86, y: 3.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.86, y: 3.86}
+  m_EdgeRadius: 0
 --- !u!1 &1480689269
 GameObject:
   m_ObjectHideFlags: 0
@@ -7854,7 +8041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kind: "\uBC14\uAE65\uC0C1 \uCC28\uB9BC"
-  tableSetting: {fileID: 129624199}
+  GM: {fileID: 129624198}
 --- !u!1 &1591558081
 GameObject:
   m_ObjectHideFlags: 0
@@ -7865,6 +8052,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1591558083}
   - component: {fileID: 1591558082}
+  - component: {fileID: 1591558084}
+  - component: {fileID: 1591558085}
   m_Layer: 0
   m_Name: BlueJol
   m_TagString: Untagged
@@ -7942,6 +8131,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481889013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1591558084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591558081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f663b756ae25bbe4b85a40c205a8509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 129624198}
+  isSelected: 0
+  currectCoordinate: {x: 2, y: 3}
+  displayMal: {fileID: 0}
+  showerMals: []
+  malKind: "\uCAC4\uBCD1"
+  malTeam: "\uCCAD"
+--- !u!61 &1591558085
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591558081}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.86, y: 3.86}
+    newSize: {x: 3.86, y: 3.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.86, y: 3.86}
+  m_EdgeRadius: 0
 --- !u!1 &1595337438
 GameObject:
   m_ObjectHideFlags: 0
@@ -8403,7 +8657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kind: "\uC67C\uC0C1 \uCC28\uB9BC"
-  tableSetting: {fileID: 129624199}
+  GM: {fileID: 129624198}
 --- !u!1 &1681292431
 GameObject:
   m_ObjectHideFlags: 0
@@ -9077,7 +9331,7 @@ RectTransform:
   m_GameObject: {fileID: 1819599205}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 634780666}
@@ -9603,6 +9857,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1953572328}
   - component: {fileID: 1953572327}
+  - component: {fileID: 1953572329}
+  - component: {fileID: 1953572330}
   m_Layer: 0
   m_Name: BlueJol
   m_TagString: Untagged
@@ -9680,6 +9936,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481889013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1953572329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953572326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f663b756ae25bbe4b85a40c205a8509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 129624198}
+  isSelected: 0
+  currectCoordinate: {x: 4, y: 3}
+  displayMal: {fileID: 0}
+  showerMals: []
+  malKind: "\uCAC4\uBCD1"
+  malTeam: "\uCCAD"
+--- !u!61 &1953572330
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953572326}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.86, y: 3.86}
+    newSize: {x: 3.86, y: 3.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.86, y: 3.86}
+  m_EdgeRadius: 0
 --- !u!1 &1956381541
 GameObject:
   m_ObjectHideFlags: 0

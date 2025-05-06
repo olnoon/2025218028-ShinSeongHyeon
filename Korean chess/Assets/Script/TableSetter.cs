@@ -3,7 +3,7 @@ using UnityEngine;
 public class TableSetter : MonoBehaviour
 {
     [SerializeField] string kind;
-    [SerializeField] TableSetting tableSetting;
+    [SerializeField] GameManager GM;
 
     void OnMouseDown()
     {
@@ -14,19 +14,19 @@ public class TableSetter : MonoBehaviour
     {
         if(kind == "오른상 차림")
         {
-            tableSetting.SetRightSang();
+            GM.SetRightSang();
         }
         else if(kind == "왼상 차림")
         {
-            tableSetting.SetLeftSang();
+            GM.SetLeftSang();
         }
         else if(kind == "안상 차림")
         {
-            tableSetting.SetInnerSang();
+            GM.SetInnerSang();
         }
         else if(kind == "바깥상 차림")
         {
-            tableSetting.SetOutterSang();
+            GM.SetOutterSang();
         }
     }
 }
