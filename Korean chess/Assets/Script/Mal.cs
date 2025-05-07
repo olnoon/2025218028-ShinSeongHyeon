@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class Mal : MonoBehaviour
 {
@@ -36,13 +35,14 @@ public class Mal : MonoBehaviour
         }
         GM.selectedMal = gameObject;
         isSelected = true;
-        if(malKind == "쫄병")
+        switch(malKind)
         {
-            CreateJolDisplays();
-        }
-        else if(malKind == "차")
-        {
-            CreateCharDisplays();
+            case "JolByeong":
+                CreateJolDisplays();
+            break;
+            case "Char":
+                CreateCharDisplays();
+            break;
         }
     }
 

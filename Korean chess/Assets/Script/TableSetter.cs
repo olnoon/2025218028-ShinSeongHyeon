@@ -12,19 +12,19 @@ public class TableSetter : MonoBehaviour
 
     void Judge()
     {
-        if(kind == "오른상 차림")
+        if(kind == "RightSangSet")
         {
             GM.SetRightSang();
         }
-        else if(kind == "왼상 차림")
+        else if(kind == "LeftSangSet")
         {
             GM.SetLeftSang();
         }
-        else if(kind == "안상 차림")
+        else if(kind == "InnerSangSet")
         {
             GM.SetInnerSang();
         }
-        else if(kind == "바깥상 차림")
+        else if(kind == "OutterSangSet")
         {
             GM.SetOutterSang();
         }

@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d47ab43045b8b4cb29244e4840ea36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: "\uBC14\uAE65\uC0C1 \uCC28\uB9BC"
+  kind: OutterSangSet
   GM: {fileID: 129624198}
 --- !u!61 &117221832
 BoxCollider2D:
@@ -1072,8 +1072,8 @@ MonoBehaviour:
   currectCoordinate: {x: 6, y: 3}
   displayMal: {fileID: 0}
   showerMals: []
-  malKind: "\uCAC4\uBCD1"
-  malTeam: "\uCCAD"
+  malKind: JolByeong
+  malTeam: Blue
 --- !u!61 &148700953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d47ab43045b8b4cb29244e4840ea36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: "\uC67C\uC0C1 \uCC28\uB9BC"
+  kind: LeftSangSet
   GM: {fileID: 129624198}
 --- !u!61 &235474634
 BoxCollider2D:
@@ -3807,7 +3807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d47ab43045b8b4cb29244e4840ea36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: "\uC548\uC0C1 \uCC28\uB9BC"
+  kind: InnerSangSet
   GM: {fileID: 129624198}
 --- !u!1 &619394800
 GameObject:
@@ -4692,7 +4692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d47ab43045b8b4cb29244e4840ea36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: "\uC624\uB978\uC0C1 \uCC28\uB9BC"
+  kind: RightSangSet
   GM: {fileID: 129624198}
 --- !u!1 &808270948
 GameObject:
@@ -5075,8 +5075,8 @@ MonoBehaviour:
   currectCoordinate: {x: 0, y: 0}
   displayMal: {fileID: 0}
   showerMals: []
-  malKind: "\uCC28"
-  malTeam: "\uCCAD"
+  malKind: Char
+  malTeam: Blue
 --- !u!61 &939557431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5829,7 +5829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d47ab43045b8b4cb29244e4840ea36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: "\uC548\uC0C1 \uCC28\uB9BC"
+  kind: InnerSangSet
   GM: {fileID: 129624198}
 --- !u!61 &1100514317
 BoxCollider2D:
@@ -6022,8 +6022,8 @@ MonoBehaviour:
   currectCoordinate: {x: 8, y: 3}
   displayMal: {fileID: 0}
   showerMals: []
-  malKind: "\uCAC4\uBCD1"
-  malTeam: "\uCCAD"
+  malKind: JolByeong
+  malTeam: Blue
 --- !u!61 &1103850038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6258,7 +6258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d47ab43045b8b4cb29244e4840ea36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: "\uC624\uB978\uC0C1 \uCC28\uB9BC"
+  kind: RightSangSet
   GM: {fileID: 129624198}
 --- !u!61 &1130080531
 BoxCollider2D:
@@ -7614,8 +7614,8 @@ MonoBehaviour:
   currectCoordinate: {x: 0, y: 3}
   displayMal: {fileID: 0}
   showerMals: []
-  malKind: "\uCAC4\uBCD1"
-  malTeam: "\uCCAD"
+  malKind: JolByeong
+  malTeam: Blue
 --- !u!61 &1461623756
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8220,7 +8220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d47ab43045b8b4cb29244e4840ea36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: "\uBC14\uAE65\uC0C1 \uCC28\uB9BC"
+  kind: OutterSangSet
   GM: {fileID: 129624198}
 --- !u!1 &1591558081
 GameObject:
@@ -8329,8 +8329,8 @@ MonoBehaviour:
   currectCoordinate: {x: 2, y: 3}
   displayMal: {fileID: 0}
   showerMals: []
-  malKind: "\uCAC4\uBCD1"
-  malTeam: "\uCCAD"
+  malKind: JolByeong
+  malTeam: Blue
 --- !u!61 &1591558085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8864,7 +8864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d47ab43045b8b4cb29244e4840ea36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kind: "\uC67C\uC0C1 \uCC28\uB9BC"
+  kind: LeftSangSet
   GM: {fileID: 129624198}
 --- !u!1 &1681292431
 GameObject:
@@ -10162,8 +10162,8 @@ MonoBehaviour:
   currectCoordinate: {x: 4, y: 3}
   displayMal: {fileID: 0}
   showerMals: []
-  malKind: "\uCAC4\uBCD1"
-  malTeam: "\uCCAD"
+  malKind: JolByeong
+  malTeam: Blue
 --- !u!61 &1953572330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10924,8 +10924,8 @@ MonoBehaviour:
   currectCoordinate: {x: 8, y: 0}
   displayMal: {fileID: 0}
   showerMals: []
-  malKind: "\uCC28"
-  malTeam: "\uCCAD"
+  malKind: Char
+  malTeam: Blue
 --- !u!61 &2118618101
 BoxCollider2D:
   m_ObjectHideFlags: 0
