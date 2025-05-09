@@ -17,7 +17,6 @@ public class Mal : MonoBehaviour
     public List<GameObject> showerMals;
     [SerializeField] malKinds malKind;
     public string malTeam;
-    public bool isCatched;
     void Start()
     {
         displayMal = gameObject;
@@ -104,7 +103,7 @@ public class Mal : MonoBehaviour
         Color color = new Color(0, 0, 0, 0.5f);
         for(int i = currectCoordinate.x+1; i < GM.locateMaterixes[currectCoordinate.y].locates.Count; i++)
         {
-            isCatched = false;
+            
             Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[i].position;
             Vector2Int moveToCoordinate = new Vector2Int(i, currectCoordinate.y);
             
@@ -114,7 +113,7 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.y+1; i < GM.locateMaterixes.Count; i++)
         {
-            isCatched = false;
+            
             Vector2 displayMalPos = GM.locateMaterixes[i].locates[currectCoordinate.x].position;
             Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, i);
             
@@ -124,7 +123,7 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.x - 1; i >= 0; i--)
         {
-            isCatched = false;
+            
             Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[i].position;
             Vector2Int moveToCoordinate = new Vector2Int(i, currectCoordinate.y);
             
@@ -134,7 +133,7 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.y - 1; i >= 0; i--)
         {
-            isCatched = false;
+            
             Vector2 displayMalPos = GM.locateMaterixes[i].locates[currectCoordinate.x].position;
             Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, i);
             
@@ -182,7 +181,7 @@ public class Mal : MonoBehaviour
         Color color = new Color(0, 0, 0, 0.5f);
         for(int i = currectCoordinate.x+1; i < GM.locateMaterixes[currectCoordinate.y].locates.Count; i++)
         {
-            isCatched = false;
+            
             Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[i].position;
             Vector2Int moveToCoordinate = new Vector2Int(i, currectCoordinate.y);
             
@@ -192,7 +191,7 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.y+1; i < GM.locateMaterixes.Count; i++)
         {
-            isCatched = false;
+            
             Vector2 displayMalPos = GM.locateMaterixes[i].locates[currectCoordinate.x].position;
             Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, i);
             
@@ -202,7 +201,7 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.x - 1; i >= 0; i--)
         {
-            isCatched = false;
+            
             Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[i].position;
             Vector2Int moveToCoordinate = new Vector2Int(i, currectCoordinate.y);
             
@@ -212,7 +211,7 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.y - 1; i >= 0; i--)
         {
-            isCatched = false;
+            
             Vector2 displayMalPos = GM.locateMaterixes[i].locates[currectCoordinate.x].position;
             Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, i);
             
@@ -223,36 +222,23 @@ public class Mal : MonoBehaviour
     }
     public void DestroyPoeByCatched(GameObject first)
     {
-        var malDisplay = first.GetComponent<MalDisplay>();
-        int firstIndex = showerMals.IndexOf(first);
-
-        if (malDisplay.moveToCoordinate.x == currectCoordinate.x)
+        if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMals.IndexOf(first) < GM.locateMaterixes.Count)
         {
-            int count = GM.locateMaterixes.Count - malDisplay.moveToCoordinate.y;
-            for (int i = 0; i < count; i++)
-            {
-                int targetIndex = firstIndex + i;
-                if (targetIndex >= 0 && targetIndex < showerMals.Count)
-                {
-                    Destroy(showerMals[targetIndex]);
-                }
-            }
+            Debug.Log(currectCoordinate.y);
+            Debug.Log(showerMals.IndexOf(first)+1);
+            // for(int i = currectCoordinate.y; i < showerMals.IndexOf(first)+1; i++)
+            // {
+            //     Destroy(showerMals[i]);
+            // }
         }
-        else if (malDisplay.moveToCoordinate.y == currectCoordinate.y)
-        {
-            int count = GM.locateMaterixes[currectCoordinate.y].locates.Count - malDisplay.moveToCoordinate.x;
-            for (int i = 0; i < count; i++)
-            {
-                int targetIndex = firstIndex + i;
-                if (targetIndex >= 0 && targetIndex < showerMals.Count)
-                {
-                    Destroy(showerMals[targetIndex]);
-                }
-            }
-        }
-
-        // Destroy 후 null 제거
-        showerMals.RemoveAll(item => item == null);
+        // else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
+        // {
+        //     for(int i = currectCoordinate.x; i < showerMals.IndexOf(first)+1; i++)
+        //     {
+        //         Destroy(showerMals[i]);
+        //     }
+        // }
+        // showerMals.RemoveAll(item => item == null);
     }
     void CreateEachDisplay(GameObject showerMal, Color color, Vector2Int moveToCoordinate)
     {

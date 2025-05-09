@@ -24,11 +24,13 @@ public class MalDisplay : MonoBehaviour
         {
             if(collision.GetComponent<Mal>().malTeam == team)
             {
-                originalObj.GetComponent<Mal>().isCatched = true;
                 switch(malKind)
                 {
                     case malKinds.Char:
                         originalObj.GetComponent<Mal>().DestroyCharByCatched(gameObject);
+                    break;
+                    case malKinds.Poe:
+                        originalObj.GetComponent<Mal>().DestroyPoeByCatched(gameObject);
                     break;
                     default:
                         originalObj.GetComponent<Mal>().showerMals.Remove(gameObject);
