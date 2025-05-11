@@ -1074,7 +1074,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
-  isCatched: 0
 --- !u!61 &148700953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3128,7 +3127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &510667726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3291,7 +3290,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 2
   malTeam: Blue
-  isCatched: 0
 --- !u!1 &519085591
 GameObject:
   m_ObjectHideFlags: 0
@@ -4714,7 +4712,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 2
   malTeam: Blue
-  isCatched: 0
 --- !u!1 &788685991
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,7 +5267,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 1
   malTeam: Blue
-  isCatched: 0
 --- !u!61 &939557431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6218,7 +6214,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
-  isCatched: 0
 --- !u!61 &1103850038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7811,7 +7806,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
-  isCatched: 0
 --- !u!61 &1461623756
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8527,7 +8521,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
-  isCatched: 0
 --- !u!61 &1591558085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10361,7 +10354,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
-  isCatched: 0
 --- !u!61 &1953572330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11125,7 +11117,6 @@ MonoBehaviour:
   showerMals: []
   malKind: 1
   malTeam: Blue
-  isCatched: 0
 --- !u!61 &2118618101
 BoxCollider2D:
   m_ObjectHideFlags: 0

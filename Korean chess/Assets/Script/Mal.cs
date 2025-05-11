@@ -224,12 +224,13 @@ public class Mal : MonoBehaviour
     {
         if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMals.IndexOf(first) < GM.locateMaterixes.Count)
         {
-            Debug.Log(currectCoordinate.y);
-            Debug.Log(showerMals.IndexOf(first)+1);
-            // for(int i = currectCoordinate.y; i < showerMals.IndexOf(first)+1; i++)
-            // {
-            //     Destroy(showerMals[i]);
-            // }
+            Debug.Log(showerMals.IndexOf(first));
+            Debug.Log(showerMals.IndexOf(first) + first.GetComponent<MalDisplay>().moveToCoordinate.y);
+            //for(i가 지신의 위의 y좌표에 있는 MalDisplay의 인덱스 부터 first의 인덱스까지)
+            for(int i = currectCoordinate.y+1; i < showerMals.IndexOf(first); i++)
+            {
+                Destroy(showerMals[i]);
+            }
         }
         // else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
         // {
