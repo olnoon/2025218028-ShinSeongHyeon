@@ -220,26 +220,40 @@ public class Mal : MonoBehaviour
             CreateEachDisplay(showerMal, color, moveToCoordinate);
         }
     }
-    public void DestroyPoeByCatched(GameObject first)
+    public void DestroyPoeByCatched(GameObject end)
     {
-        if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMals.IndexOf(first) < GM.locateMaterixes.Count)
+        if(end.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMals.IndexOf(end) < GM.locateMaterixes.Count)
         {
-            Debug.Log(showerMals.IndexOf(first));
-            Debug.Log(showerMals.IndexOf(first) + first.GetComponent<MalDisplay>().moveToCoordinate.y);
-            //for(i가 지신의 위의 y좌표에 있는 MalDisplay의 인덱스 부터 first의 인덱스까지)
-            for(int i = currectCoordinate.y+1; i < showerMals.IndexOf(first); i++)
+            GameObject start = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y + 1 && each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x)
+                {
+                    start = each;
+                    break;
+                }
+            }
+            for(int i = showerMals.IndexOf(start); i < showerMals.IndexOf(end)+1; i++)
             {
                 Destroy(showerMals[i]);
             }
         }
-        // else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
-        // {
-        //     for(int i = currectCoordinate.x; i < showerMals.IndexOf(first)+1; i++)
-        //     {
-        //         Destroy(showerMals[i]);
-        //     }
-        // }
-        // showerMals.RemoveAll(item => item == null);
+        else if(end.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && showerMals.IndexOf(end) < GM.locateMaterixes[currectCoordinate.x].locates.Count)
+        {
+            GameObject start = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x + 1 && each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
+                {
+                    start = each;
+                    break;
+                }
+            }
+            for(int i = showerMals.IndexOf(start); i < showerMals.IndexOf(end); i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
     }
     void CreateEachDisplay(GameObject showerMal, Color color, Vector2Int moveToCoordinate)
     {

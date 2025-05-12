@@ -30,7 +30,6 @@ public class MalDisplay : MonoBehaviour
                         originalObj.GetComponent<Mal>().DestroyCharByCatched(gameObject);
                     break;
                     case malKinds.Poe:
-                        Debug.Log(collision.gameObject.name);
                         originalObj.GetComponent<Mal>().DestroyPoeByCatched(gameObject);
                     break;
                     default:
