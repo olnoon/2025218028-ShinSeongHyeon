@@ -17,6 +17,7 @@ public class Mal : MonoBehaviour
     public List<GameObject> showerMals;
     [SerializeField] malKinds malKind;
     public string malTeam;
+    public bool isDestroyed = false;
     void Start()
     {
         displayMal = gameObject;
@@ -233,10 +234,115 @@ public class Mal : MonoBehaviour
 
             CreateEachDisplay(showerMal, color, moveToCoordinate);
         }
+        Invoke("DetectDestroyPoeDisplay", 0.1f);
+    }
+    
+    void DetectDestroyPoeDisplay()
+    {
+        GameObject left = null;
+        GameObject right = null;
+        GameObject front = null;
+        GameObject back = null;
+
+        bool isleftDestroy = true;
+        bool isrightDestroy = true;
+        bool isfrontDestroy = true;
+        bool isbackDestroy = true;
+        
+        foreach(GameObject showerMal in showerMals)
+        {
+            if(showerMal == null)
+            {
+                continue;
+            }
+            if(showerMal.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && showerMal.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x - 1)
+            {
+                isleftDestroy = false;
+                left = showerMal;
+                continue;
+            }
+            else if(showerMal.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && showerMal.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x + 1)
+            {
+                isrightDestroy = false;
+                right = showerMal;
+                continue;
+            }
+            else if(showerMal.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMal.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y - 1)
+            {
+                isbackDestroy = false;
+                back = showerMal;
+                continue;
+            }
+            else if(showerMal.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMal.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y + 1)
+            {
+                isfrontDestroy = false;
+                front = showerMal;
+                continue;
+            }
+        }
+        
+        if(!isfrontDestroy)
+        {
+            Debug.Log("1111");
+            GameObject end = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each == null)
+                {
+                    continue;
+                }
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.y == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x)
+                {
+                    end = each;
+                    break;
+                }
+            }
+            for(int i = showerMals.IndexOf(front); i <= showerMals.IndexOf(end); i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        if(!isbackDestroy)
+        {
+            for(int i = showerMals.IndexOf(back); i < showerMals.IndexOf(back) + GM.locateMaterixes.Count - back.GetComponent<MalDisplay>().moveToCoordinate.y; i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        if(!isrightDestroy)
+        {
+            Debug.Log("3333");
+            GameObject end = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each == null)
+                {
+                    continue;
+                }
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.x == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
+                {
+                    end = each;
+                    break;
+                }
+            }
+            for(int i = showerMals.IndexOf(right); i <= showerMals.IndexOf(end); i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        if(!isleftDestroy)
+        {
+            Debug.Log("4444");
+            for(int i = showerMals.IndexOf(left); i < showerMals.IndexOf(left) + GM.locateMaterixes[currectCoordinate.y].locates.Count - left.GetComponent<MalDisplay>().moveToCoordinate.x; i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
     }
     public void DestroyPoeByCatched(GameObject end)
     {
-        if(end.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMals.IndexOf(end) < GM.locateMaterixes.Count)
+        isDestroyed = true;
+        if(end.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && end.GetComponent<MalDisplay>().moveToCoordinate.y >= currectCoordinate.y && showerMals.IndexOf(end) < GM.locateMaterixes.Count)
         {
             GameObject start = null;
             foreach(GameObject each in showerMals)
@@ -252,7 +358,7 @@ public class Mal : MonoBehaviour
                 Destroy(showerMals[i]);
             }
         }
-        else if(end.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && showerMals.IndexOf(end) < GM.locateMaterixes[currectCoordinate.x].locates.Count)
+        else if(end.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && end.GetComponent<MalDisplay>().moveToCoordinate.x >= currectCoordinate.x && showerMals.IndexOf(end) < GM.locateMaterixes[currectCoordinate.x].locates.Count)
         {
             GameObject start = null;
             foreach(GameObject each in showerMals)
@@ -268,21 +374,40 @@ public class Mal : MonoBehaviour
                 Destroy(showerMals[i]);
             }
         }
-        else if(end.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMals.IndexOf(end) > 0)
+        else if(end.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && end.GetComponent<MalDisplay>().moveToCoordinate.y <= currectCoordinate.y && showerMals.IndexOf(end) > 0)
         {
-            for(int i = showerMals.IndexOf(end); i > 0; i--)
+            GameObject start = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y - 1 && each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x)
+                {
+                    start = each;
+                    break;
+                }
+            }
+            for(int i =  showerMals.IndexOf(start); i < showerMals.IndexOf(end) + 1; i++)
             {
                 Destroy(showerMals[i]);
             }
         }
-        else if(end.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && showerMals.IndexOf(end) > 0)
+        else if(end.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && end.GetComponent<MalDisplay>().moveToCoordinate.x <= currectCoordinate.x && showerMals.IndexOf(end) > 0)
         {
-            for(int i = showerMals.IndexOf(end); i > 0; i--)
+            GameObject start = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x - 1 && each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
+                {
+                    start = each;
+                    break;
+                }
+            }
+            for(int i =  showerMals.IndexOf(start); i < showerMals.IndexOf(end) + 1; i++)
             {
                 Destroy(showerMals[i]);
             }
         }
     }
+
     void CreateEachDisplay(GameObject showerMal, Color color, Vector2Int moveToCoordinate)
     {
         showerMal.GetComponent<SpriteRenderer>().color = color;

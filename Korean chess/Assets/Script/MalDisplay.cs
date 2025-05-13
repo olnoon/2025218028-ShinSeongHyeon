@@ -31,6 +31,8 @@ public class MalDisplay : MonoBehaviour
                     break;
                     case malKinds.Poe:
                         originalObj.GetComponent<Mal>().DestroyPoeByCatched(gameObject);
+                        //TODO 한번 넘으면 그 다음에 겹치는 거 있을 땐 못 넘게 하기
+                        //TODO 포가 겹치면 못 넘게 하기
                     break;
                     default:
                         originalObj.GetComponent<Mal>().showerMals.Remove(gameObject);
