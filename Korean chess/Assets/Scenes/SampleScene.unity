@@ -1118,7 +1118,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &148700954
 Rigidbody2D:
@@ -3269,7 +3269,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &510667730
 MonoBehaviour:
@@ -4691,7 +4691,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &781084120
 MonoBehaviour:
@@ -5311,7 +5311,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &939557432
 Rigidbody2D:
@@ -6258,7 +6258,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &1103850039
 Rigidbody2D:
@@ -7850,7 +7850,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &1461623757
 Rigidbody2D:
@@ -8565,7 +8565,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &1591558086
 Rigidbody2D:
@@ -10398,7 +10398,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &1953572331
 Rigidbody2D:
@@ -11161,7 +11161,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.86, y: 3.86}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &2118618102
 Rigidbody2D:

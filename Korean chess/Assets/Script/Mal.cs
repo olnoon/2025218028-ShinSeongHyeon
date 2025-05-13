@@ -142,38 +142,56 @@ public class Mal : MonoBehaviour
             CreateEachDisplay(showerMal, color, moveToCoordinate);
         }
     }
+    
     public void DestroyCharByCatched(GameObject first)
     {
-        var malDisplay = first.GetComponent<MalDisplay>();
-        int firstIndex = showerMals.IndexOf(first);
-
-        if (malDisplay.moveToCoordinate.x == currectCoordinate.x)
+        if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && first.GetComponent<MalDisplay>().moveToCoordinate.y <= currectCoordinate.y)
         {
-            int count = GM.locateMaterixes.Count - malDisplay.moveToCoordinate.y;
-            for (int i = 0; i < count; i++)
+            GameObject end = null;
+            foreach(GameObject each in showerMals)
             {
-                int targetIndex = firstIndex + i;
-                if (targetIndex >= 0 && targetIndex < showerMals.Count)
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.y == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x)
                 {
-                    Destroy(showerMals[targetIndex]);
+                    end = each;
+                    break;
                 }
             }
-        }
-        else if (malDisplay.moveToCoordinate.y == currectCoordinate.y)
-        {
-            int count = GM.locateMaterixes[currectCoordinate.y].locates.Count - malDisplay.moveToCoordinate.x;
-            for (int i = 0; i < count; i++)
+            for(int i = showerMals.IndexOf(first); i <= showerMals.IndexOf(end); i++)
             {
-                int targetIndex = firstIndex + i;
-                if (targetIndex >= 0 && targetIndex < showerMals.Count)
-                {
-                    Destroy(showerMals[targetIndex]);
-                }
+                Destroy(showerMals[i]);
             }
         }
-
-        // Destroy 후 null 제거
-        showerMals.RemoveAll(item => item == null);
+        else if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && first.GetComponent<MalDisplay>().moveToCoordinate.y >= currectCoordinate.y)
+        {
+            for(int i = showerMals.IndexOf(first); i < showerMals.IndexOf(first) + GM.locateMaterixes.Count - first.GetComponent<MalDisplay>().moveToCoordinate.y; i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && first.GetComponent<MalDisplay>().moveToCoordinate.x <= currectCoordinate.x)
+        {
+            GameObject end = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.x == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
+                {
+                    end = each;
+                    break;
+                }
+            }
+            for(int i = showerMals.IndexOf(first); i <= showerMals.IndexOf(end); i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && first.GetComponent<MalDisplay>().moveToCoordinate.x >= currectCoordinate.x)
+        {
+            for(int i = showerMals.IndexOf(first); i < showerMals.IndexOf(first) + GM.locateMaterixes[currectCoordinate.y].locates.Count - first.GetComponent<MalDisplay>().moveToCoordinate.x; i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        showerMals.RemoveAll(item => item == null); 
     }
     
     void CreatePoeDisplays()
@@ -181,7 +199,6 @@ public class Mal : MonoBehaviour
         Color color = new Color(0, 0, 0, 0.5f);
         for(int i = currectCoordinate.x+1; i < GM.locateMaterixes[currectCoordinate.y].locates.Count; i++)
         {
-            
             Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[i].position;
             Vector2Int moveToCoordinate = new Vector2Int(i, currectCoordinate.y);
             
@@ -191,7 +208,6 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.y+1; i < GM.locateMaterixes.Count; i++)
         {
-            
             Vector2 displayMalPos = GM.locateMaterixes[i].locates[currectCoordinate.x].position;
             Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, i);
             
@@ -201,7 +217,6 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.x - 1; i >= 0; i--)
         {
-            
             Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[i].position;
             Vector2Int moveToCoordinate = new Vector2Int(i, currectCoordinate.y);
             
@@ -211,7 +226,6 @@ public class Mal : MonoBehaviour
         }
         for(int i = currectCoordinate.y - 1; i >= 0; i--)
         {
-            
             Vector2 displayMalPos = GM.locateMaterixes[i].locates[currectCoordinate.x].position;
             Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, i);
             
@@ -249,7 +263,21 @@ public class Mal : MonoBehaviour
                     break;
                 }
             }
-            for(int i = showerMals.IndexOf(start); i < showerMals.IndexOf(end); i++)
+            for(int i = showerMals.IndexOf(start); i < showerMals.IndexOf(end) + 1; i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        else if(end.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMals.IndexOf(end) > 0)
+        {
+            for(int i = showerMals.IndexOf(end); i > 0; i--)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        else if(end.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && showerMals.IndexOf(end) > 0)
+        {
+            for(int i = showerMals.IndexOf(end); i > 0; i--)
             {
                 Destroy(showerMals[i]);
             }
