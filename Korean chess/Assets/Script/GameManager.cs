@@ -38,81 +38,148 @@ public class GameManager : MonoBehaviour
     }
     public void SetRightSang()
     {
-        if(isRedSet)
+        if (isRedSet)
         {
-            Instantiate(RedSang, locateMaterixes[9].locates[1].transform.position, Quaternion.identity);
-            Instantiate(RedMa, locateMaterixes[9].locates[2].transform.position, Quaternion.identity);
-            Instantiate(RedSang, locateMaterixes[9].locates[6].transform.position, Quaternion.identity);
-            Instantiate(RedMa, locateMaterixes[9].locates[7].transform.position, Quaternion.identity);
+            GameObject obj1 = Instantiate(RedSang, locateMaterixes[9].locates[1].transform.position, Quaternion.identity);
+            obj1.GetComponent<Mal>().currectCoordinate = new Vector2Int(1, 9);
+
+            GameObject obj2 = Instantiate(RedMa, locateMaterixes[9].locates[2].transform.position, Quaternion.identity);
+            obj2.GetComponent<Mal>().currectCoordinate = new Vector2Int(2, 9);
+
+            GameObject obj3 = Instantiate(RedSang, locateMaterixes[9].locates[6].transform.position, Quaternion.identity);
+            obj3.GetComponent<Mal>().currectCoordinate = new Vector2Int(6, 9);
+
+            GameObject obj4 = Instantiate(RedMa, locateMaterixes[9].locates[7].transform.position, Quaternion.identity);
+            obj4.GetComponent<Mal>().currectCoordinate = new Vector2Int(7, 9);
+
             isRedSet = false;
             SetBlueTable();
         }
         else
         {
-            Instantiate(BlueMa, locateMaterixes[0].locates[1].transform.position, Quaternion.identity);
-            Instantiate(BlueSang, locateMaterixes[0].locates[2].transform.position, Quaternion.identity);
-            Instantiate(BlueMa, locateMaterixes[0].locates[6].transform.position, Quaternion.identity);
-            Instantiate(BlueSang, locateMaterixes[0].locates[7].transform.position, Quaternion.identity);
+            GameObject obj1 = Instantiate(BlueMa, locateMaterixes[0].locates[1].transform.position, Quaternion.identity);
+            obj1.GetComponent<Mal>().currectCoordinate = new Vector2Int(1, 0);
+
+            GameObject obj2 = Instantiate(BlueSang, locateMaterixes[0].locates[2].transform.position, Quaternion.identity);
+            obj2.GetComponent<Mal>().currectCoordinate = new Vector2Int(2, 0);
+
+            GameObject obj3 = Instantiate(BlueMa, locateMaterixes[0].locates[6].transform.position, Quaternion.identity);
+            obj3.GetComponent<Mal>().currectCoordinate = new Vector2Int(6, 0);
+
+            GameObject obj4 = Instantiate(BlueSang, locateMaterixes[0].locates[7].transform.position, Quaternion.identity);
+            obj4.GetComponent<Mal>().currectCoordinate = new Vector2Int(7, 0);
+
             BlueSangSetter.SetActive(false);
         }
     }
+
     public void SetLeftSang()
     {
-        if(isRedSet)
+        if (isRedSet)
         {
-            Instantiate(RedMa, locateMaterixes[9].locates[1].transform.position, Quaternion.identity);
-            Instantiate(RedSang, locateMaterixes[9].locates[2].transform.position, Quaternion.identity);
-            Instantiate(RedMa, locateMaterixes[9].locates[6].transform.position, Quaternion.identity);
-            Instantiate(RedSang, locateMaterixes[9].locates[7].transform.position, Quaternion.identity);
+            GameObject obj1 = Instantiate(RedMa, locateMaterixes[9].locates[1].transform.position, Quaternion.identity);
+            obj1.GetComponent<Mal>().currectCoordinate = new Vector2Int(1, 9);
+
+            GameObject obj2 = Instantiate(RedSang, locateMaterixes[9].locates[2].transform.position, Quaternion.identity);
+            obj2.GetComponent<Mal>().currectCoordinate = new Vector2Int(2, 9);
+
+            GameObject obj3 = Instantiate(RedMa, locateMaterixes[9].locates[6].transform.position, Quaternion.identity);
+            obj3.GetComponent<Mal>().currectCoordinate = new Vector2Int(6, 9);
+
+            GameObject obj4 = Instantiate(RedSang, locateMaterixes[9].locates[7].transform.position, Quaternion.identity);
+            obj4.GetComponent<Mal>().currectCoordinate = new Vector2Int(7, 9);
+
             isRedSet = false;
             SetBlueTable();
         }
         else
         {
-            Instantiate(BlueSang, locateMaterixes[0].locates[1].transform.position, Quaternion.identity);
-            Instantiate(BlueMa, locateMaterixes[0].locates[2].transform.position, Quaternion.identity);
-            Instantiate(BlueSang, locateMaterixes[0].locates[6].transform.position, Quaternion.identity);
-            Instantiate(BlueMa, locateMaterixes[0].locates[7].transform.position, Quaternion.identity);
+            GameObject obj1 = Instantiate(BlueSang, locateMaterixes[0].locates[1].transform.position, Quaternion.identity);
+            obj1.GetComponent<Mal>().currectCoordinate = new Vector2Int(1, 0);
+
+            GameObject obj2 = Instantiate(BlueMa, locateMaterixes[0].locates[2].transform.position, Quaternion.identity);
+            obj2.GetComponent<Mal>().currectCoordinate = new Vector2Int(2, 0);
+
+            GameObject obj3 = Instantiate(BlueSang, locateMaterixes[0].locates[6].transform.position, Quaternion.identity);
+            obj3.GetComponent<Mal>().currectCoordinate = new Vector2Int(6, 0);
+
+            GameObject obj4 = Instantiate(BlueMa, locateMaterixes[0].locates[7].transform.position, Quaternion.identity);
+            obj4.GetComponent<Mal>().currectCoordinate = new Vector2Int(7, 0);
+
             BlueSangSetter.SetActive(false);
         }
     }
+
     public void SetInnerSang()
     {
-        if(isRedSet)
+        if (isRedSet)
         {
-            Instantiate(RedMa, locateMaterixes[9].locates[1].transform.position, Quaternion.identity);
-            Instantiate(RedSang, locateMaterixes[9].locates[2].transform.position, Quaternion.identity);
-            Instantiate(RedSang, locateMaterixes[9].locates[6].transform.position, Quaternion.identity);
-            Instantiate(RedMa, locateMaterixes[9].locates[7].transform.position, Quaternion.identity);
+            GameObject obj1 = Instantiate(RedMa, locateMaterixes[9].locates[1].transform.position, Quaternion.identity);
+            obj1.GetComponent<Mal>().currectCoordinate = new Vector2Int(1, 9);
+
+            GameObject obj2 = Instantiate(RedSang, locateMaterixes[9].locates[2].transform.position, Quaternion.identity);
+            obj2.GetComponent<Mal>().currectCoordinate = new Vector2Int(2, 9);
+
+            GameObject obj3 = Instantiate(RedSang, locateMaterixes[9].locates[6].transform.position, Quaternion.identity);
+            obj3.GetComponent<Mal>().currectCoordinate = new Vector2Int(6, 9);
+
+            GameObject obj4 = Instantiate(RedMa, locateMaterixes[9].locates[7].transform.position, Quaternion.identity);
+            obj4.GetComponent<Mal>().currectCoordinate = new Vector2Int(7, 9);
+
             isRedSet = false;
             SetBlueTable();
         }
         else
         {
-            Instantiate(BlueMa, locateMaterixes[0].locates[1].transform.position, Quaternion.identity);
-            Instantiate(BlueSang, locateMaterixes[0].locates[2].transform.position, Quaternion.identity);
-            Instantiate(BlueSang, locateMaterixes[0].locates[6].transform.position, Quaternion.identity);
-            Instantiate(BlueMa, locateMaterixes[0].locates[7].transform.position, Quaternion.identity);
+            GameObject obj1 = Instantiate(BlueMa, locateMaterixes[0].locates[1].transform.position, Quaternion.identity);
+            obj1.GetComponent<Mal>().currectCoordinate = new Vector2Int(1, 0);
+
+            GameObject obj2 = Instantiate(BlueSang, locateMaterixes[0].locates[2].transform.position, Quaternion.identity);
+            obj2.GetComponent<Mal>().currectCoordinate = new Vector2Int(2, 0);
+
+            GameObject obj3 = Instantiate(BlueSang, locateMaterixes[0].locates[6].transform.position, Quaternion.identity);
+            obj3.GetComponent<Mal>().currectCoordinate = new Vector2Int(6, 0);
+
+            GameObject obj4 = Instantiate(BlueMa, locateMaterixes[0].locates[7].transform.position, Quaternion.identity);
+            obj4.GetComponent<Mal>().currectCoordinate = new Vector2Int(7, 0);
+
             BlueSangSetter.SetActive(false);
         }
     }
+
     public void SetOutterSang()
     {
-        if(isRedSet)
+        if (isRedSet)
         {
-            Instantiate(RedSang, locateMaterixes[9].locates[1].transform.position, Quaternion.identity);
-            Instantiate(RedMa, locateMaterixes[9].locates[2].transform.position, Quaternion.identity);
-            Instantiate(RedMa, locateMaterixes[9].locates[6].transform.position, Quaternion.identity);
-            Instantiate(RedSang, locateMaterixes[9].locates[7].transform.position, Quaternion.identity);
+            GameObject obj1 = Instantiate(RedSang, locateMaterixes[9].locates[1].transform.position, Quaternion.identity);
+            obj1.GetComponent<Mal>().currectCoordinate = new Vector2Int(1, 9);
+
+            GameObject obj2 = Instantiate(RedMa, locateMaterixes[9].locates[2].transform.position, Quaternion.identity);
+            obj2.GetComponent<Mal>().currectCoordinate = new Vector2Int(2, 9);
+
+            GameObject obj3 = Instantiate(RedMa, locateMaterixes[9].locates[6].transform.position, Quaternion.identity);
+            obj3.GetComponent<Mal>().currectCoordinate = new Vector2Int(6, 9);
+
+            GameObject obj4 = Instantiate(RedSang, locateMaterixes[9].locates[7].transform.position, Quaternion.identity);
+            obj4.GetComponent<Mal>().currectCoordinate = new Vector2Int(7, 9);
+
             isRedSet = false;
             SetBlueTable();
         }
         else
         {
-            Instantiate(BlueSang, locateMaterixes[0].locates[1].transform.position, Quaternion.identity);
-            Instantiate(BlueMa, locateMaterixes[0].locates[2].transform.position, Quaternion.identity);
-            Instantiate(BlueMa, locateMaterixes[0].locates[6].transform.position, Quaternion.identity);
-            Instantiate(BlueSang, locateMaterixes[0].locates[7].transform.position, Quaternion.identity);
+            GameObject obj1 = Instantiate(BlueSang, locateMaterixes[0].locates[1].transform.position, Quaternion.identity);
+            obj1.GetComponent<Mal>().currectCoordinate = new Vector2Int(1, 0);
+
+            GameObject obj2 = Instantiate(BlueMa, locateMaterixes[0].locates[2].transform.position, Quaternion.identity);
+            obj2.GetComponent<Mal>().currectCoordinate = new Vector2Int(2, 0);
+
+            GameObject obj3 = Instantiate(BlueMa, locateMaterixes[0].locates[6].transform.position, Quaternion.identity);
+            obj3.GetComponent<Mal>().currectCoordinate = new Vector2Int(6, 0);
+
+            GameObject obj4 = Instantiate(BlueSang, locateMaterixes[0].locates[7].transform.position, Quaternion.identity);
+            obj4.GetComponent<Mal>().currectCoordinate = new Vector2Int(7, 0);
+
             BlueSangSetter.SetActive(false);
         }
     }

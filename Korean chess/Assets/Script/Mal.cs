@@ -6,7 +6,9 @@ public enum malKinds
     JolByeong,
     Char,
     Poe,
-    KungSa
+    KungSa,
+    Ma,
+    Sang
 }
 
 public class Mal : MonoBehaviour
@@ -26,6 +28,10 @@ public class Mal : MonoBehaviour
     void Start()
     {
         displayMal = gameObject;
+        if(GM == null)
+        {
+            GM = FindFirstObjectByType<GameManager>();
+        }
     }
 
     void OnMouseDown()
@@ -62,6 +68,12 @@ public class Mal : MonoBehaviour
             case malKinds.KungSa:
                 CreateRoyalMoveDisplay();
             break;
+            case malKinds.Ma:
+                CreateMaMoveDisplay();
+            break;
+            case malKinds.Sang:
+                CreateSangMoveDisplay();
+            break;
         }
     }
 
@@ -96,10 +108,19 @@ public class Mal : MonoBehaviour
 
             CreateEachDisplay(showerMal, color, moveToCoordinate);
         }
-        if(currectCoordinate.y < GM.locateMaterixes.Count-1)
+        if(currectCoordinate.y < GM.locateMaterixes.Count-1 && malTeam == "Blue")
         {
             Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x].position;
             Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, currectCoordinate.y+1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+        }
+        if(currectCoordinate.y > 0 && malTeam == "Red")
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, currectCoordinate.y-1);
             
             GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
 
@@ -512,7 +533,127 @@ public class Mal : MonoBehaviour
             }
         }
     }
+    void CreateMaMoveDisplay()
+    {
+        Color color = new Color(0, 0, 0, 0.5f);
+        if(currectCoordinate.x > 0)
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[currectCoordinate.x-1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x-1, currectCoordinate.y);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
 
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(showerMal != null)
+            {
+                showerMal.GetComponent<MalDisplay>().Invoke("CreateMaDiagonal", 0.1f);
+            }
+        }
+        if(currectCoordinate.x < GM.locateMaterixes[currectCoordinate.y].locates.Count-1)
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[currectCoordinate.x+1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x+1, currectCoordinate.y);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(showerMal != null)
+            {
+                showerMal.GetComponent<MalDisplay>().Invoke("CreateMaDiagonal", 0.1f);
+            }
+        }
+        if(currectCoordinate.y > 0)
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, currectCoordinate.y-1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(showerMal != null)
+            {
+                showerMal.GetComponent<MalDisplay>().Invoke("CreateMaDiagonal", 0.1f);
+            }
+        }
+        if(currectCoordinate.y < GM.locateMaterixes.Count-1)
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, currectCoordinate.y+1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(showerMal != null)
+            {
+                showerMal.GetComponent<MalDisplay>().Invoke("CreateMaDiagonal", 0.1f);
+            }
+        }
+    }
+    void CreateSangMoveDisplay()
+    {
+        
+        Color color = new Color(0, 0, 0, 0.5f);
+        if(currectCoordinate.x > 0)
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[currectCoordinate.x-1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x-1, currectCoordinate.y);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(showerMal != null)
+            {
+                showerMal.GetComponent<MalDisplay>().Invoke("CreateSangDiagonal", 0.1f);
+            }
+        }
+        if(currectCoordinate.x < GM.locateMaterixes[currectCoordinate.y].locates.Count-1)
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y].locates[currectCoordinate.x+1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x+1, currectCoordinate.y);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(showerMal != null)
+            {
+                showerMal.GetComponent<MalDisplay>().Invoke("CreateSangDiagonal", 0.1f);
+            }
+        }
+        if(currectCoordinate.y > 0)
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, currectCoordinate.y-1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(showerMal != null)
+            {
+                showerMal.GetComponent<MalDisplay>().Invoke("CreateSangDiagonal", 0.1f);
+            }
+        }
+        if(currectCoordinate.y < GM.locateMaterixes.Count-1)
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, currectCoordinate.y+1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(showerMal != null)
+            {
+                showerMal.GetComponent<MalDisplay>().Invoke("CreateSangDiagonal", 0.1f);
+            }
+        }
+    }
     void CreateRoyalMoveDisplay()
     {
         Color color = new Color(0, 0, 0, 0.5f);
@@ -560,11 +701,17 @@ public class Mal : MonoBehaviour
         return Vector2Int.Distance(moveToCoordinate, currectCoordinate) > 1 && !isCenter;
     }
     
-    void CreateEachDisplay(GameObject showerMal, Color color, Vector2Int moveToCoordinate)
+    public void CreateEachDisplay(GameObject showerMal, Color color, Vector2Int moveToCoordinate)
     {
         showerMal.GetComponent<SpriteRenderer>().color = color;
-        Destroy(showerMal.GetComponent<Mal>());
-        showerMal.AddComponent<MalDisplay>();
+        if(showerMal.GetComponent<Mal>() != null)
+        {
+            Destroy(showerMal.GetComponent<Mal>());
+        }
+        if (showerMal.GetComponent<MalDisplay>() == null)
+        {
+            showerMal.AddComponent<MalDisplay>();
+        }
         showerMal.GetComponent<MalDisplay>().originalObj = gameObject;
         showerMal.GetComponent<MalDisplay>().moveToCoordinate = moveToCoordinate;
         showerMal.GetComponent<MalDisplay>().team = malTeam;

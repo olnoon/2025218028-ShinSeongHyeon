@@ -18,6 +18,187 @@ public class MalDisplay : MonoBehaviour
         originalObj.GetComponent<Mal>().currectCoordinate = moveToCoordinate;
     }
 
+    public void CreateMaDiagonal()
+    {
+        GameManager GM = FindFirstObjectByType<GameManager>();
+        Color color = new Color(0, 0, 0, 0.5f);
+        if(originalObj.GetComponent<Mal>().currectCoordinate.x >= moveToCoordinate.x && moveToCoordinate.x-1 >= 0 && originalObj.GetComponent<Mal>().currectCoordinate.y == moveToCoordinate.y)
+        {
+            
+            if(moveToCoordinate.y-1 >= 0)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x-1, moveToCoordinate.y-1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x-1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+            if(moveToCoordinate.y+1 <= GM.locateMaterixes.Count)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x-1, moveToCoordinate.y+1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y+1].locates[moveToCoordinate.x-1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+        }
+        else if(originalObj.GetComponent<Mal>().currectCoordinate.x <= moveToCoordinate.x && moveToCoordinate.x + 1 < GM.locateMaterixes[moveToCoordinate.y].locates.Count && originalObj.GetComponent<Mal>().currectCoordinate.y == moveToCoordinate.y)
+        {
+            if(moveToCoordinate.y - 1 >= 0 && moveToCoordinate.x + 1 < GM.locateMaterixes[moveToCoordinate.y - 1].locates.Count) 
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x + 1, moveToCoordinate.y - 1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y - 1].locates[moveToCoordinate.x + 1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+            if(moveToCoordinate.y + 1 < GM.locateMaterixes.Count && moveToCoordinate.x + 1 < GM.locateMaterixes[moveToCoordinate.y + 1].locates.Count)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x + 1, moveToCoordinate.y + 1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y + 1].locates[moveToCoordinate.x + 1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+        }
+        else if(originalObj.GetComponent<Mal>().currectCoordinate.y >= moveToCoordinate.y && moveToCoordinate.y-1 >= 0 && originalObj.GetComponent<Mal>().currectCoordinate.x == moveToCoordinate.x)
+        {
+            
+            if(moveToCoordinate.x-1 >= 0)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x-1, moveToCoordinate.y-1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x-1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+            if(moveToCoordinate.x+1 <= GM.locateMaterixes[moveToCoordinate.y].locates.Count)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x+1, moveToCoordinate.y-1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x+1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+        }
+        else if(originalObj.GetComponent<Mal>().currectCoordinate.y <= moveToCoordinate.y && moveToCoordinate.y + 1 < GM.locateMaterixes.Count && originalObj.GetComponent<Mal>().currectCoordinate.x == moveToCoordinate.x) 
+        {
+            if (moveToCoordinate.x - 1 >= 0 && moveToCoordinate.x - 1 < GM.locateMaterixes[moveToCoordinate.y + 1].locates.Count) {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x - 1, moveToCoordinate.y + 1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y + 1].locates[moveToCoordinate.x - 1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+            if (moveToCoordinate.x + 1 < GM.locateMaterixes[moveToCoordinate.y + 1].locates.Count) {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x + 1, moveToCoordinate.y + 1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y + 1].locates[moveToCoordinate.x + 1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+        }
+
+        Destroy(gameObject);
+        originalObj.GetComponent<Mal>().showerMals.Remove(gameObject);
+    }
+
+    public void CreateSangDiagonal()
+    {
+        GameManager GM = FindFirstObjectByType<GameManager>();
+        Color color = new Color(0, 0, 0, 0.5f);
+        if(originalObj.GetComponent<Mal>().currectCoordinate.x >= moveToCoordinate.x && moveToCoordinate.x-1 >= 0 && originalObj.GetComponent<Mal>().currectCoordinate.y == moveToCoordinate.y)
+        {
+            if(moveToCoordinate.y-1 >= 0)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x-1, moveToCoordinate.y-1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x-1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+                next.GetComponent<MalDisplay>().AgainSangDiagonal();
+            }
+            if(moveToCoordinate.y+1 <= GM.locateMaterixes.Count)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x-1, moveToCoordinate.y+1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y+1].locates[moveToCoordinate.x-1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+                next.GetComponent<MalDisplay>().AgainSangDiagonal();
+            }
+        }
+        else if(originalObj.GetComponent<Mal>().currectCoordinate.x <= moveToCoordinate.x && moveToCoordinate.x + 1 < GM.locateMaterixes[moveToCoordinate.y].locates.Count && originalObj.GetComponent<Mal>().currectCoordinate.y == moveToCoordinate.y)
+        {
+            if(moveToCoordinate.y - 1 >= 0 && moveToCoordinate.x + 1 < GM.locateMaterixes[moveToCoordinate.y - 1].locates.Count) 
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x + 1, moveToCoordinate.y - 1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y - 1].locates[moveToCoordinate.x + 1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+                next.GetComponent<MalDisplay>().AgainSangDiagonal();
+            }
+            if(moveToCoordinate.y + 1 < GM.locateMaterixes.Count && moveToCoordinate.x + 1 < GM.locateMaterixes[moveToCoordinate.y + 1].locates.Count)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x + 1, moveToCoordinate.y + 1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y + 1].locates[moveToCoordinate.x + 1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+                next.GetComponent<MalDisplay>().AgainSangDiagonal();
+            }
+        }
+        else if(originalObj.GetComponent<Mal>().currectCoordinate.y >= moveToCoordinate.y && moveToCoordinate.y-1 >= 0 && originalObj.GetComponent<Mal>().currectCoordinate.x == moveToCoordinate.x)
+        {
+            if(moveToCoordinate.x-1 >= 0)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x-1, moveToCoordinate.y-1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x-1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+                next.GetComponent<MalDisplay>().AgainSangDiagonal();
+            }
+            if(moveToCoordinate.x+1 <= GM.locateMaterixes[moveToCoordinate.y].locates.Count)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x+1, moveToCoordinate.y-1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x+1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+                next.GetComponent<MalDisplay>().AgainSangDiagonal();
+            }
+        }
+        else if(originalObj.GetComponent<Mal>().currectCoordinate.y <= moveToCoordinate.y && moveToCoordinate.y + 1 < GM.locateMaterixes.Count && originalObj.GetComponent<Mal>().currectCoordinate.x == moveToCoordinate.x) 
+        {
+            if (moveToCoordinate.x - 1 >= 0 && moveToCoordinate.x - 1 < GM.locateMaterixes[moveToCoordinate.y + 1].locates.Count) {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x - 1, moveToCoordinate.y + 1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y + 1].locates[moveToCoordinate.x - 1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+                next.GetComponent<MalDisplay>().AgainSangDiagonal();
+            }
+            if (moveToCoordinate.x + 1 < GM.locateMaterixes[moveToCoordinate.y + 1].locates.Count) {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x + 1, moveToCoordinate.y + 1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y + 1].locates[moveToCoordinate.x + 1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+                next.GetComponent<MalDisplay>().AgainSangDiagonal();
+            }
+        }
+
+        Destroy(gameObject);
+        originalObj.GetComponent<Mal>().showerMals.Remove(gameObject);
+    }
+    public void AgainSangDiagonal() 
+    {
+        GameManager GM = FindFirstObjectByType<GameManager>();
+        Color color = new Color(0, 0, 0, 0.5f);
+        if(originalObj.GetComponent<Mal>().currectCoordinate.y <= moveToCoordinate.y && moveToCoordinate.y+1 < GM.locateMaterixes.Count)
+        {
+            if(originalObj.GetComponent<Mal>().currectCoordinate.x <= moveToCoordinate.x && moveToCoordinate.x+1 < GM.locateMaterixes[moveToCoordinate.y].locates.Count)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x+1, moveToCoordinate.y+1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y+1].locates[moveToCoordinate.x+1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+            else if(originalObj.GetComponent<Mal>().currectCoordinate.x >= moveToCoordinate.x && moveToCoordinate.x-1 > 0)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x-1, moveToCoordinate.y+1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y+1].locates[moveToCoordinate.x-1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+        }
+        else if(originalObj.GetComponent<Mal>().currectCoordinate.y >= moveToCoordinate.y && moveToCoordinate.y-1 > 0)
+        {
+            if(originalObj.GetComponent<Mal>().currectCoordinate.x <= moveToCoordinate.x && moveToCoordinate.x+1 < GM.locateMaterixes[moveToCoordinate.y].locates.Count)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x+1, moveToCoordinate.y-1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x+1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+            else if(originalObj.GetComponent<Mal>().currectCoordinate.x >= moveToCoordinate.x && moveToCoordinate.x-1 > 0)
+            {
+                Vector2Int nextPos = new Vector2Int(moveToCoordinate.x-1, moveToCoordinate.y-1);
+                GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x-1].position, Quaternion.identity);
+                originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
+            }
+        }
+        Destroy(gameObject);
+        originalObj.GetComponent<Mal>().showerMals.Remove(gameObject);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.GetComponent<Mal>() != null && collision.gameObject != originalObj)
