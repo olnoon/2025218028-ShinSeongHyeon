@@ -18,6 +18,10 @@ public class Mal : MonoBehaviour
     [SerializeField] malKinds malKind;
     public string malTeam;
     public bool isDestroyed = false;
+    [SerializeField] int left;
+    [SerializeField] int right;
+    [SerializeField] int front;
+    [SerializeField] int back;
     void Start()
     {
         displayMal = gameObject;
@@ -206,6 +210,11 @@ public class Mal : MonoBehaviour
             GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
 
             CreateEachDisplay(showerMal, color, moveToCoordinate);
+            
+            if(i == currectCoordinate.x+1)
+            {
+                right = showerMals.IndexOf(showerMal);
+            }
         }
         for(int i = currectCoordinate.y+1; i < GM.locateMaterixes.Count; i++)
         {
@@ -213,8 +222,13 @@ public class Mal : MonoBehaviour
             Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x, i);
             
             GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
-
+            
             CreateEachDisplay(showerMal, color, moveToCoordinate);
+
+            if(i == currectCoordinate.y+1)
+            {
+                front = showerMals.IndexOf(showerMal);
+            }
         }
         for(int i = currectCoordinate.x - 1; i >= 0; i--)
         {
@@ -224,6 +238,11 @@ public class Mal : MonoBehaviour
             GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
 
             CreateEachDisplay(showerMal, color, moveToCoordinate);
+            
+            if(i == currectCoordinate.x-1)
+            {
+                left = showerMals.IndexOf(showerMal);
+            }
         }
         for(int i = currectCoordinate.y - 1; i >= 0; i--)
         {
@@ -233,109 +252,191 @@ public class Mal : MonoBehaviour
             GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
 
             CreateEachDisplay(showerMal, color, moveToCoordinate);
+            
+            if(i == currectCoordinate.y-1)
+            {
+                back = showerMals.IndexOf(showerMal);
+            }
         }
-        Invoke("DetectDestroyPoeDisplay", 0.1f);
+        Invoke("DetectDestroyPoeDisplay", 0.2f);
     }
     
     void DetectDestroyPoeDisplay()
     {
-        GameObject left = null;
-        GameObject right = null;
-        GameObject front = null;
-        GameObject back = null;
+        DetectDestroyPoeDisplayLeft();
+        DetectDestroyPoeDisplayRight();
+        DetectDestroyPoeDisplayBack();
+        DetectDestroyPoeDisplayfront();
+    }
 
-        bool isleftDestroy = true;
-        bool isrightDestroy = true;
-        bool isfrontDestroy = true;
-        bool isbackDestroy = true;
-        
-        foreach(GameObject showerMal in showerMals)
+    void DetectDestroyPoeDisplayLeft()
+    {
+        bool isDestroyed = false;
+        int repeatNum = 0;
+        foreach(GameObject each in showerMals)
         {
-            if(showerMal == null)
+            if(showerMals.IndexOf(each) < left)
             {
                 continue;
             }
-            if(showerMal.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && showerMal.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x - 1)
+            else if(repeatNum == currectCoordinate.x)
             {
-                isleftDestroy = false;
-                left = showerMal;
-                continue;
+                break;
             }
-            else if(showerMal.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && showerMal.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x + 1)
+            else if(each == null)
             {
-                isrightDestroy = false;
-                right = showerMal;
-                continue;
+                isDestroyed = true;
+                break;
             }
-            else if(showerMal.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMal.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y - 1)
-            {
-                isbackDestroy = false;
-                back = showerMal;
-                continue;
-            }
-            else if(showerMal.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && showerMal.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y + 1)
-            {
-                isfrontDestroy = false;
-                front = showerMal;
-                continue;
-            }
+            repeatNum++;
         }
-        
-        if(!isfrontDestroy)
+        repeatNum = 0;
+        if(!isDestroyed)
         {
-            Debug.Log("1111");
-            GameObject end = null;
             foreach(GameObject each in showerMals)
             {
-                if(each == null)
+                if(showerMals.IndexOf(each) < left)
                 {
                     continue;
                 }
-                if(each.GetComponent<MalDisplay>().moveToCoordinate.y == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x)
+                else if(repeatNum == currectCoordinate.x)
                 {
-                    end = each;
                     break;
                 }
-            }
-            for(int i = showerMals.IndexOf(front); i <= showerMals.IndexOf(end); i++)
-            {
-                Destroy(showerMals[i]);
-            }
-        }
-        if(!isbackDestroy)
-        {
-            for(int i = showerMals.IndexOf(back); i < showerMals.IndexOf(back) + GM.locateMaterixes.Count - back.GetComponent<MalDisplay>().moveToCoordinate.y; i++)
-            {
-                Destroy(showerMals[i]);
+                else if(each != null)
+                {
+                    Destroy(each);
+                    repeatNum++;
+                }
             }
         }
-        if(!isrightDestroy)
+    }
+    
+    void DetectDestroyPoeDisplayRight()
+    {
+        bool isDestroyed = false;
+        int repeatNum = currectCoordinate.x;
+        foreach(GameObject each in showerMals)
         {
-            Debug.Log("3333");
-            GameObject end = null;
+            if(showerMals.IndexOf(each) < right)
+            {
+                continue;
+            }
+            else if(repeatNum == GM.locateMaterixes[currectCoordinate.y].locates.Count - 1)
+            {
+                break;
+            }
+            else if(each == null)
+            {
+                isDestroyed = true;
+                break;
+            }
+            repeatNum++;
+        }
+        repeatNum = currectCoordinate.x;
+        if(!isDestroyed)
+        {
             foreach(GameObject each in showerMals)
             {
-                if(each == null)
+                if(showerMals.IndexOf(each) < right)
                 {
                     continue;
                 }
-                if(each.GetComponent<MalDisplay>().moveToCoordinate.x == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
+                else if(repeatNum == GM.locateMaterixes[currectCoordinate.y].locates.Count - 1)
                 {
-                    end = each;
                     break;
                 }
-            }
-            for(int i = showerMals.IndexOf(right); i <= showerMals.IndexOf(end); i++)
-            {
-                Destroy(showerMals[i]);
+                else if(each != null)
+                {
+                    Destroy(each);
+                    repeatNum++;
+                }
             }
         }
-        if(!isleftDestroy)
+    }
+    
+    void DetectDestroyPoeDisplayfront()
+    {
+        bool isDestroyed = false;
+        int repeatNum = currectCoordinate.y;
+        foreach(GameObject each in showerMals)
         {
-            Debug.Log("4444");
-            for(int i = showerMals.IndexOf(left); i < showerMals.IndexOf(left) + GM.locateMaterixes[currectCoordinate.y].locates.Count - left.GetComponent<MalDisplay>().moveToCoordinate.x; i++)
+            if(showerMals.IndexOf(each) < front)
             {
-                Destroy(showerMals[i]);
+                continue;
+            }
+            else if(repeatNum == GM.locateMaterixes.Count - 1)
+            {
+                break;
+            }
+            else if(each == null)
+            {
+                isDestroyed = true;
+                break;
+            }
+            repeatNum++;
+        }
+        repeatNum = currectCoordinate.y;
+        if(!isDestroyed)
+        {
+            foreach(GameObject each in showerMals)
+            {
+                if(showerMals.IndexOf(each) < front)
+                {
+                    continue;
+                }
+                else if(repeatNum == GM.locateMaterixes.Count - 1)
+                {
+                    break;
+                }
+                else if(each != null)
+                {
+                    Destroy(each);
+                    repeatNum++;
+                }
+            }
+        }
+    }
+    
+    void DetectDestroyPoeDisplayBack()
+    {
+        bool isDestroyed = false;
+        int repeatNum = 0;
+        foreach(GameObject each in showerMals)
+        {
+            if(showerMals.IndexOf(each) < back)
+            {
+                continue;
+            }
+            else if(repeatNum == currectCoordinate.y)
+            {
+                break;
+            }
+            else if(each == null)
+            {
+                isDestroyed = true;
+                break;
+            }
+            repeatNum++;
+        }
+        repeatNum = 0;
+        if(!isDestroyed)
+        {
+            foreach(GameObject each in showerMals)
+            {
+                if(showerMals.IndexOf(each) < back)
+                {
+                    continue;
+                }
+                else if(repeatNum == currectCoordinate.y)
+                {
+                    break;
+                }
+                else if(each != null)
+                {
+                    Destroy(each);
+                    repeatNum++;
+                }
             }
         }
     }
