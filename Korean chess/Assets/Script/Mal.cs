@@ -5,7 +5,8 @@ public enum malKinds
 {
     JolByeong,
     Char,
-    Poe
+    Poe,
+    KungSa
 }
 
 public class Mal : MonoBehaviour
@@ -57,6 +58,9 @@ public class Mal : MonoBehaviour
             break;
             case malKinds.Poe:
                 CreatePoeDisplays();
+            break;
+            case malKinds.KungSa:
+                CreateRoyalMoveDisplay();
             break;
         }
     }
@@ -258,7 +262,7 @@ public class Mal : MonoBehaviour
                 back = showerMals.IndexOf(showerMal);
             }
         }
-        Invoke("DetectDestroyPoeDisplay", 0.2f);
+        Invoke("DetectDestroyPoeDisplay", 0.1f);
     }
     
     void DetectDestroyPoeDisplay()
@@ -509,6 +513,53 @@ public class Mal : MonoBehaviour
         }
     }
 
+    void CreateRoyalMoveDisplay()
+    {
+        Color color = new Color(0, 0, 0, 0.5f);
+        for(int i = 3; i < 6; i++)
+        {
+            int startInd = 0;
+            if(malTeam == "Red")
+            {
+                startInd = GM.locateMaterixes.Count-2;
+            }
+            for(int j = startInd; j < startInd + 3; j++)
+            {
+                Vector2 displayMalPos = GM.locateMaterixes[j].locates[i].position;
+                Vector2Int moveToCoordinate = new Vector2Int(i, j);
+                
+                GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+                CreateEachDisplay(showerMal, color, moveToCoordinate);
+            }
+        }
+        Invoke("DetectDestroyRoyalDisplay", 0.1f);
+    }
+
+    void DetectDestroyRoyalDisplay()
+    {
+        foreach(GameObject each in showerMals)
+        {
+            if(each.GetComponent<MalDisplay>().moveToCoordinate == currectCoordinate)
+            {
+                Destroy(each);
+                continue;
+            }
+            else if(determineRoyalDisplay(each))
+            {
+                Destroy(each);
+                continue;
+            }
+        }
+    }
+
+    bool determineRoyalDisplay(GameObject each)
+    {
+        Vector2Int moveToCoordinate = each.GetComponent<MalDisplay>().moveToCoordinate;
+        bool isCenter = (moveToCoordinate.y == 1 || moveToCoordinate.y == GM.locateMaterixes.Count-1) && moveToCoordinate.x == 4;
+        return Vector2Int.Distance(moveToCoordinate, currectCoordinate) > 1 && !isCenter;
+    }
+    
     void CreateEachDisplay(GameObject showerMal, Color color, Vector2Int moveToCoordinate)
     {
         showerMal.GetComponent<SpriteRenderer>().color = color;
@@ -520,4 +571,5 @@ public class Mal : MonoBehaviour
         showerMal.GetComponent<MalDisplay>().malKind = malKind;
         showerMals.Add(showerMal);
     }
+
 }

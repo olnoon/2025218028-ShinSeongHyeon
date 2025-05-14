@@ -1074,6 +1074,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!61 &148700953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1824,6 +1829,9 @@ GameObject:
   m_Component:
   - component: {fileID: 268863579}
   - component: {fileID: 268863578}
+  - component: {fileID: 268863580}
+  - component: {fileID: 268863581}
+  - component: {fileID: 268863582}
   m_Layer: 0
   m_Name: BlueSa
   m_TagString: Untagged
@@ -1901,6 +1909,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481889013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &268863580
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268863577}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &268863581
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268863577}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.86, y: 3.86}
+    newSize: {x: 3.86, y: 3.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3, y: 3}
+  m_EdgeRadius: 0
+--- !u!114 &268863582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268863577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f663b756ae25bbe4b85a40c205a8509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 129624198}
+  isSelected: 0
+  currectCoordinate: {x: 5, y: 0}
+  displayMal: {fileID: 0}
+  showerMals: []
+  malKind: 3
+  malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!1 &270668464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,12 +3169,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1243312054}
+  - {fileID: 1958829746}
+  - {fileID: 268863579}
   - {fileID: 781084117}
   - {fileID: 510667727}
   - {fileID: 2118618099}
   - {fileID: 939557429}
-  - {fileID: 1958829746}
-  - {fileID: 268863579}
   - {fileID: 1461623754}
   - {fileID: 1591558083}
   - {fileID: 1953572328}
@@ -3127,7 +3232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &510667726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3290,6 +3395,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 2
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!1 &519085591
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,6 +4822,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 2
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!1 &788685991
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,6 +5382,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 1
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!61 &939557431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6214,6 +6334,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!61 &1103850038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7095,6 +7220,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1243312054}
   - component: {fileID: 1243312053}
+  - component: {fileID: 1243312055}
+  - component: {fileID: 1243312056}
+  - component: {fileID: 1243312057}
   m_Layer: 0
   m_Name: BlueKung
   m_TagString: Untagged
@@ -7172,6 +7300,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481889013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1243312055
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243312052}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1243312056
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243312052}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.7, y: 5.7}
+    newSize: {x: 5.7, y: 5.7}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3, y: 3}
+  m_EdgeRadius: 0
+--- !u!114 &1243312057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243312052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f663b756ae25bbe4b85a40c205a8509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 129624198}
+  isSelected: 0
+  currectCoordinate: {x: 4, y: 1}
+  displayMal: {fileID: 0}
+  showerMals: []
+  malKind: 3
+  malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!1 &1259283353
 GameObject:
   m_ObjectHideFlags: 0
@@ -7806,6 +8031,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!61 &1461623756
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8521,6 +8751,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!61 &1591558085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10354,6 +10589,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 0
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!61 &1953572330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10468,6 +10708,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1958829746}
   - component: {fileID: 1958829745}
+  - component: {fileID: 1958829747}
+  - component: {fileID: 1958829748}
+  - component: {fileID: 1958829749}
   m_Layer: 0
   m_Name: BlueSa
   m_TagString: Untagged
@@ -10545,6 +10788,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481889013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1958829747
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958829744}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1958829748
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958829744}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.86, y: 3.86}
+    newSize: {x: 3.86, y: 3.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3, y: 3}
+  m_EdgeRadius: 0
+--- !u!114 &1958829749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958829744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f663b756ae25bbe4b85a40c205a8509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 129624198}
+  isSelected: 0
+  currectCoordinate: {x: 3, y: 0}
+  displayMal: {fileID: 0}
+  showerMals: []
+  malKind: 3
+  malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!1 &1962177895
 GameObject:
   m_ObjectHideFlags: 0
@@ -11117,6 +11457,11 @@ MonoBehaviour:
   showerMals: []
   malKind: 1
   malTeam: Blue
+  isDestroyed: 0
+  left: 0
+  right: 0
+  front: 0
+  back: 0
 --- !u!61 &2118618101
 BoxCollider2D:
   m_ObjectHideFlags: 0
