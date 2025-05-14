@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject RedSangSetter;
     [SerializeField] bool isRedSet;
     public GameObject selectedMal;
+    public string redTurn = "";
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         isRedSet = false;
         RedSangSetter.SetActive(false);
         BlueSangSetter.SetActive(true);
+        redTurn = "Red";
     }
     public void SetRightSang()
     {

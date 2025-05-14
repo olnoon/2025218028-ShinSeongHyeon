@@ -16,6 +16,14 @@ public class MalDisplay : MonoBehaviour
         originalObj.transform.position = transform.position;
         originalObj.GetComponent<Mal>().UnSelectMal();
         originalObj.GetComponent<Mal>().currectCoordinate = moveToCoordinate;
+        if(FindFirstObjectByType<GameManager>().redTurn == "Red")
+        {
+            FindFirstObjectByType<GameManager>().redTurn = "Blue";
+        }
+        else if(FindFirstObjectByType<GameManager>().redTurn == "Blue")
+        {
+            FindFirstObjectByType<GameManager>().redTurn = "Red";
+        }
     }
 
     public void CreateMaDiagonal()
@@ -205,6 +213,7 @@ public class MalDisplay : MonoBehaviour
         {
             if(collision.GetComponent<Mal>().malTeam == team)
             {
+                Debug.Log(moveToCoordinate);
                 switch(malKind)
                 {
                     case malKinds.Char:

@@ -36,13 +36,16 @@ public class Mal : MonoBehaviour
 
     void OnMouseDown()
     {
-        if(isSelected)
+        if(GM.redTurn == malTeam)
         {
-            UnSelectMal();
-        }
-        else
-        {
-            SelectMal();
+            if(isSelected)
+            {
+                UnSelectMal();
+            }
+            else
+            {
+                SelectMal();
+            }
         }
     }
     
@@ -662,7 +665,7 @@ public class Mal : MonoBehaviour
             int startInd = 0;
             if(malTeam == "Red")
             {
-                startInd = GM.locateMaterixes.Count-2;
+                startInd = GM.locateMaterixes.Count-3;
             }
             for(int j = startInd; j < startInd + 3; j++)
             {
@@ -686,6 +689,13 @@ public class Mal : MonoBehaviour
                 Destroy(each);
                 continue;
             }
+        }
+        foreach(GameObject each in showerMals)
+        {
+            if((currectCoordinate.y == 1 || currectCoordinate.y == GM.locateMaterixes.Count - 2) && currectCoordinate.x == 4)
+            {
+                break;
+            }
             else if(determineRoyalDisplay(each))
             {
                 Destroy(each);
@@ -697,7 +707,7 @@ public class Mal : MonoBehaviour
     bool determineRoyalDisplay(GameObject each)
     {
         Vector2Int moveToCoordinate = each.GetComponent<MalDisplay>().moveToCoordinate;
-        bool isCenter = (moveToCoordinate.y == 1 || moveToCoordinate.y == GM.locateMaterixes.Count-1) && moveToCoordinate.x == 4;
+        bool isCenter = (moveToCoordinate.y == 1 || moveToCoordinate.y == GM.locateMaterixes.Count-2) && moveToCoordinate.x == 4;
         return Vector2Int.Distance(moveToCoordinate, currectCoordinate) > 1 && !isCenter;
     }
     
@@ -718,5 +728,14 @@ public class Mal : MonoBehaviour
         showerMal.GetComponent<MalDisplay>().malKind = malKind;
         showerMals.Add(showerMal);
     }
-
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.GetComponent<Mal>() != null)
+        {
+            if(collision.GetComponent<Mal>().malTeam != malTeam && GM.redTurn != malTeam)
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+    }
 }
