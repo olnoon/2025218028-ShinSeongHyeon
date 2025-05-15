@@ -393,10 +393,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\n"
+  m_text: "\uC0C1 \uCC28\uB9BC\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 05a9c35621cb2e14aaecc4fb127e1733, type: 2}
-  m_sharedMaterial: {fileID: 1217916694372140216, guid: 05a9c35621cb2e14aaecc4fb127e1733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f8380fe22709fcb49838b55a7d499570, type: 2}
+  m_sharedMaterial: {fileID: 7815854639282020591, guid: f8380fe22709fcb49838b55a7d499570, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &96482958
@@ -6094,10 +6094,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\n"
+  m_text: "\uC0C1 \uCC28\uB9BC\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 05a9c35621cb2e14aaecc4fb127e1733, type: 2}
-  m_sharedMaterial: {fileID: 1217916694372140216, guid: 05a9c35621cb2e14aaecc4fb127e1733, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f8380fe22709fcb49838b55a7d499570, type: 2}
+  m_sharedMaterial: {fileID: 7815854639282020591, guid: f8380fe22709fcb49838b55a7d499570, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6162,7 +6162,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &989764159
