@@ -8,7 +8,8 @@ public enum malKinds
     Poe,
     KungSa,
     Ma,
-    Sang
+    Sang,
+    charCrossline
 }
 
 public class Mal : MonoBehaviour
@@ -18,7 +19,7 @@ public class Mal : MonoBehaviour
     public Vector2Int currectCoordinate;
     [SerializeField] GameObject displayMal;
     public List<GameObject> showerMals;
-    [SerializeField] malKinds malKind;
+    public malKinds malKind;
     public string malTeam;
     public bool isDestroyed = false;
     [SerializeField] int left;
@@ -129,8 +130,48 @@ public class Mal : MonoBehaviour
 
             CreateEachDisplay(showerMal, color, moveToCoordinate);
         }
+        CreateJolinRoyalZone();
     }
+    void CreateJolinRoyalZone()
+    {
+        Color color = new Color(0, 0, 0, 0.5f);
+        if((currectCoordinate.x == 5 && currectCoordinate.y == 2)||(currectCoordinate.x == 4 && currectCoordinate.y == 1))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x-1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x-1, currectCoordinate.y-1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
 
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+        }
+        if((currectCoordinate.x == 3 && currectCoordinate.y == 2)||(currectCoordinate.x == 4 && currectCoordinate.y == 1))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x+1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x+1, currectCoordinate.y-1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+        }
+        if((currectCoordinate.x == 5 && currectCoordinate.y == GM.locateMaterixes.Count - 3)||(currectCoordinate.x == 4 && currectCoordinate.y == GM.locateMaterixes.Count - 2))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x-1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x-1, currectCoordinate.y+1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+        }
+        if((currectCoordinate.x == 3 && currectCoordinate.y == GM.locateMaterixes.Count - 3)||(currectCoordinate.x == 4 && currectCoordinate.y == GM.locateMaterixes.Count - 2))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x+1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x+1, currectCoordinate.y+1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate);
+        }
+    }
     void CreateCharDisplays()
     {
         Color color = new Color(0, 0, 0, 0.5f);
@@ -173,6 +214,107 @@ public class Mal : MonoBehaviour
             GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
 
             CreateEachDisplay(showerMal, color, moveToCoordinate);
+        }
+        
+        CreateCharinRoyalZone();
+    }
+
+    void CreateCharinRoyalZone()
+    {
+        Color color = new Color(0, 0, 0, 0.5f);
+        if((currectCoordinate.x == 5 && currectCoordinate.y == 0)||(currectCoordinate.x == 5 && currectCoordinate.y == GM.locateMaterixes.Count-3))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x-1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x-1, currectCoordinate.y+1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+            
+            displayMalPos = GM.locateMaterixes[currectCoordinate.y+2].locates[currectCoordinate.x-2].position;
+            moveToCoordinate = new Vector2Int(currectCoordinate.x-2, currectCoordinate.y+2);
+            
+            showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+        }
+        if((currectCoordinate.x == 3 && currectCoordinate.y == 0)||(currectCoordinate.x == 3 && currectCoordinate.y == GM.locateMaterixes.Count-3))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x+1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x+1, currectCoordinate.y+1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+            
+            displayMalPos = GM.locateMaterixes[currectCoordinate.y+2].locates[currectCoordinate.x+2].position;
+            moveToCoordinate = new Vector2Int(currectCoordinate.x+2, currectCoordinate.y+2);
+            
+            showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+        }
+        if((currectCoordinate.x == 5 && currectCoordinate.y == 2)||(currectCoordinate.x == 5 && currectCoordinate.y == GM.locateMaterixes.Count-2))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x-1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x-1, currectCoordinate.y-1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+            
+            displayMalPos = GM.locateMaterixes[currectCoordinate.y-2].locates[currectCoordinate.x-2].position;
+            moveToCoordinate = new Vector2Int(currectCoordinate.x-2, currectCoordinate.y-2);
+            
+            showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+        }
+        if((currectCoordinate.x == 3 && currectCoordinate.y == 2)||(currectCoordinate.x == 3 && currectCoordinate.y == GM.locateMaterixes.Count-2))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x+1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x+1, currectCoordinate.y-1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+            
+            displayMalPos = GM.locateMaterixes[currectCoordinate.y-2].locates[currectCoordinate.x+2].position;
+            moveToCoordinate = new Vector2Int(currectCoordinate.x+2, currectCoordinate.y-2);
+            
+            showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+        }
+        if((currectCoordinate.x == 4 && currectCoordinate.y == 1)||(currectCoordinate.x == 4 && currectCoordinate.y == GM.locateMaterixes.Count-2))
+        {
+            Vector2 displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x+1].position;
+            Vector2Int moveToCoordinate = new Vector2Int(currectCoordinate.x+1, currectCoordinate.y-1);
+            
+            GameObject showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+            
+            displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x+1].position;
+            moveToCoordinate = new Vector2Int(currectCoordinate.x+1, currectCoordinate.y+1);
+            
+            showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+            
+            displayMalPos = GM.locateMaterixes[currectCoordinate.y-1].locates[currectCoordinate.x-1].position;
+            moveToCoordinate = new Vector2Int(currectCoordinate.x-1, currectCoordinate.y-1);
+            
+            showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
+            
+            displayMalPos = GM.locateMaterixes[currectCoordinate.y+1].locates[currectCoordinate.x-1].position;
+            moveToCoordinate = new Vector2Int(currectCoordinate.x-1, currectCoordinate.y+1);
+            
+            showerMal = Instantiate(displayMal, displayMalPos, Quaternion.identity);
+
+            CreateEachDisplay(showerMal, color, moveToCoordinate, true);
         }
     }
     
@@ -297,6 +439,107 @@ public class Mal : MonoBehaviour
         DetectDestroyPoeDisplayfront();
     }
 
+    public void PoeCathcedByPoe(GameObject first)
+    {
+        if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && first.GetComponent<MalDisplay>().moveToCoordinate.y <= currectCoordinate.y)
+        {
+            GameObject end = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.y == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x)
+                {
+                    end = each;
+                    break;
+                }
+            }
+            for(int i = showerMals.IndexOf(first); i <= showerMals.IndexOf(end); i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        else if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && first.GetComponent<MalDisplay>().moveToCoordinate.y >= currectCoordinate.y)
+        {
+            for(int i = showerMals.IndexOf(first); i < showerMals.IndexOf(first) + GM.locateMaterixes.Count - first.GetComponent<MalDisplay>().moveToCoordinate.y; i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && first.GetComponent<MalDisplay>().moveToCoordinate.x <= currectCoordinate.x)
+        {
+            GameObject end = null;
+            foreach(GameObject each in showerMals)
+            {
+                if(each.GetComponent<MalDisplay>().moveToCoordinate.x == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
+                {
+                    end = each;
+                    break;
+                }
+            }
+            for(int i = showerMals.IndexOf(first); i <= showerMals.IndexOf(end); i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && first.GetComponent<MalDisplay>().moveToCoordinate.x >= currectCoordinate.x)
+        {
+            for(int i = showerMals.IndexOf(first); i < showerMals.IndexOf(first) + GM.locateMaterixes[currectCoordinate.y].locates.Count - first.GetComponent<MalDisplay>().moveToCoordinate.x; i++)
+            {
+                Destroy(showerMals[i]);
+            }
+        }
+        showerMals.RemoveAll(item => item == null); 
+    }
+    public void PoeCatedAgain(GameObject first)
+    {
+        Debug.Log($"{showerMals.IndexOf(first)} {showerMals.IndexOf(first) + GM.locateMaterixes.Count - first.GetComponent<MalDisplay>().moveToCoordinate.y}");
+        // if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && first.GetComponent<MalDisplay>().moveToCoordinate.y <= currectCoordinate.y)
+        // {
+        //     GameObject end = null;
+        //     foreach(GameObject each in showerMals)
+        //     {
+        //         if(each.GetComponent<MalDisplay>().moveToCoordinate.y == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x)
+        //         {
+        //             end = each;
+        //             break;
+        //         }
+        //     }
+        //     for(int i = showerMals.IndexOf(first); i <= showerMals.IndexOf(end); i++)
+        //     {
+        //         Destroy(showerMals[i]);
+        //     }
+        // }
+        // else if(first.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && first.GetComponent<MalDisplay>().moveToCoordinate.y >= currectCoordinate.y)
+        // {
+        //     for(int i = showerMals.IndexOf(first); i < showerMals.IndexOf(first) + GM.locateMaterixes.Count - first.GetComponent<MalDisplay>().moveToCoordinate.y; i++)
+        //     {
+        //         Destroy(showerMals[i]);
+        //     }
+        // }
+        // else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && first.GetComponent<MalDisplay>().moveToCoordinate.x <= currectCoordinate.x)
+        // {
+        //     GameObject end = null;
+        //     foreach(GameObject each in showerMals)
+        //     {
+        //         if(each.GetComponent<MalDisplay>().moveToCoordinate.x == 0 && each.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y)
+        //         {
+        //             end = each;
+        //             break;
+        //         }
+        //     }
+        //     for(int i = showerMals.IndexOf(first); i <= showerMals.IndexOf(end); i++)
+        //     {
+        //         Destroy(showerMals[i]);
+        //     }
+        // }
+        // else if(first.GetComponent<MalDisplay>().moveToCoordinate.y == currectCoordinate.y && first.GetComponent<MalDisplay>().moveToCoordinate.x >= currectCoordinate.x)
+        // {
+        //     for(int i = showerMals.IndexOf(first); i < showerMals.IndexOf(first) + GM.locateMaterixes[currectCoordinate.y].locates.Count - first.GetComponent<MalDisplay>().moveToCoordinate.x; i++)
+        //     {
+        //         Destroy(showerMals[i]);
+        //     }
+        // }
+        // showerMals.RemoveAll(item => item == null); 
+    }
     void DetectDestroyPoeDisplayLeft()
     {
         bool isDestroyed = false;
@@ -471,6 +714,7 @@ public class Mal : MonoBehaviour
     public void DestroyPoeByCatched(GameObject end)
     {
         isDestroyed = true;
+        if(end.GetComponent<MalDisplay>())
         if(end.GetComponent<MalDisplay>().moveToCoordinate.x == currectCoordinate.x && end.GetComponent<MalDisplay>().moveToCoordinate.y >= currectCoordinate.y && showerMals.IndexOf(end) < GM.locateMaterixes.Count)
         {
             GameObject start = null;
@@ -711,7 +955,7 @@ public class Mal : MonoBehaviour
         return Vector2Int.Distance(moveToCoordinate, currectCoordinate) > 1 && !isCenter;
     }
     
-    public void CreateEachDisplay(GameObject showerMal, Color color, Vector2Int moveToCoordinate)
+    public void CreateEachDisplay(GameObject showerMal, Color color, Vector2Int moveToCoordinate, bool crossLine = false)
     {
         showerMal.GetComponent<SpriteRenderer>().color = color;
         if(showerMal.GetComponent<Mal>() != null)
@@ -726,6 +970,10 @@ public class Mal : MonoBehaviour
         showerMal.GetComponent<MalDisplay>().moveToCoordinate = moveToCoordinate;
         showerMal.GetComponent<MalDisplay>().team = malTeam;
         showerMal.GetComponent<MalDisplay>().malKind = malKind;
+        if(crossLine)
+        {
+            showerMal.GetComponent<MalDisplay>().malKind = malKinds.charCrossline;
+        }
         showerMals.Add(showerMal);
     }
     void OnTriggerEnter2D(Collider2D collision)

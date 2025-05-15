@@ -16,14 +16,14 @@ public class MalDisplay : MonoBehaviour
         originalObj.transform.position = transform.position;
         originalObj.GetComponent<Mal>().UnSelectMal();
         originalObj.GetComponent<Mal>().currectCoordinate = moveToCoordinate;
-        if(FindFirstObjectByType<GameManager>().redTurn == "Red")
-        {
-            FindFirstObjectByType<GameManager>().redTurn = "Blue";
-        }
-        else if(FindFirstObjectByType<GameManager>().redTurn == "Blue")
-        {
-            FindFirstObjectByType<GameManager>().redTurn = "Red";
-        }
+        // if(FindFirstObjectByType<GameManager>().redTurn == "Red")
+        // {
+        //     FindFirstObjectByType<GameManager>().redTurn = "Blue";
+        // }
+        // else if(FindFirstObjectByType<GameManager>().redTurn == "Blue")
+        // {
+        //     FindFirstObjectByType<GameManager>().redTurn = "Red";
+        // }
     }
 
     public void CreateMaDiagonal()
@@ -72,6 +72,7 @@ public class MalDisplay : MonoBehaviour
             }
             if(moveToCoordinate.x+1 <= GM.locateMaterixes[moveToCoordinate.y].locates.Count)
             {
+                //TODO 여기 고치기
                 Vector2Int nextPos = new Vector2Int(moveToCoordinate.x+1, moveToCoordinate.y-1);
                 GameObject next = Instantiate(gameObject, GM.locateMaterixes[moveToCoordinate.y-1].locates[moveToCoordinate.x+1].position, Quaternion.identity);
                 originalObj.GetComponent<Mal>().CreateEachDisplay(next, color, nextPos);
@@ -213,16 +214,20 @@ public class MalDisplay : MonoBehaviour
         {
             if(collision.GetComponent<Mal>().malTeam == team)
             {
-                Debug.Log(moveToCoordinate);
                 switch(malKind)
                 {
                     case malKinds.Char:
                         originalObj.GetComponent<Mal>().DestroyCharByCatched(gameObject);
                     break;
                     case malKinds.Poe:
+                        // if(collision.GetComponent<Mal>().malKind == malKinds.Poe)
+                        // {
+                        //     originalObj.GetComponent<Mal>().PoeCathcedByPoe(gameObject);
+                        // }
                         originalObj.GetComponent<Mal>().DestroyPoeByCatched(gameObject);
+                        // originalObj.GetComponent<Mal>().PoeCatedAgain(gameObject);
                         //TODO 한번 넘으면 그 다음에 겹치는 거 있을 땐 못 넘게 하기
-                        //TODO 포가 겹치면 못 넘게 하기
+                        //TODO 포가 포 못 먹게 하기
                     break;
                     default:
                         originalObj.GetComponent<Mal>().showerMals.Remove(gameObject);
